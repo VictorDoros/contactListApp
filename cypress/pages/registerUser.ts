@@ -1,32 +1,33 @@
 import User from "../models/user"
+import selectors from "../selectors/register.sel"
 
 export default class RegisterUser {
   private get firstNameInput() {
-    return "#firstName"
+    return selectors.firstNameField
   }
 
   private get lastName() {
-    return "#lastName"
+    return selectors.lastNameField
   }
 
   private get email() {
-    return "#email"
+    return selectors.emailField
   }
 
   private get password() {
-    return "#password"
+    return selectors.passwordField
   }
 
   private get signUpButton() {
-    return "#signup"
+    return selectors.signUpButton
   }
 
   private get submitButton() {
-    return "#submit"
+    return selectors.submitButton
   }
 
   private get header() {
-    return "h1"
+    return selectors.header
   }
 
   loadRegisterPage() {
