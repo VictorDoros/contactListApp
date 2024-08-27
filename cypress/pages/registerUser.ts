@@ -1,3 +1,4 @@
+import UserAPI from "../api/userAPI"
 import User from "../models/user"
 import selectors from "../selectors/register.sel"
 
@@ -48,5 +49,11 @@ export default class RegisterUser {
     cy.get(this.submitButton).click()
 
     cy.get(this.header).should("have.text", "Contact List")
+  }
+
+  registerUsingAPI(user: User){
+    return new UserAPI().register(user).then((response) => {
+      user.setToken(response.body.token)
+    })
   }
 }
