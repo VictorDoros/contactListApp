@@ -1,4 +1,4 @@
-import LogInPage from "../pages/loginPage"
+import LogInPage from "../../pages/loginPage"
 
 describe("Log in", () => {
   let logInPage: LogInPage

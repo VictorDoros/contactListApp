@@ -1,5 +1,5 @@
-import User from "../models/user"
-import RegisterUser from "../pages/registerUser"
+import User from "../../models/user"
+import RegisterUser from "../../pages/registerUser"
 
 describe("Register user", () => {
   let user: User

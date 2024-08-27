@@ -1,6 +1,6 @@
-import LogInPage from "../pages/loginPage"
-import User from "../models/user"
-import AddContactPage from "../pages/addContactPage"
+import LogInPage from "../../pages/loginPage"
+import User from "../../models/user"
+import AddContactPage from "../../pages/addContactPage"
 import "cypress-plugin-api"
 
 describe("Add contact", () => {

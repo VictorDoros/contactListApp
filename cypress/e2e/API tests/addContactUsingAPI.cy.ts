@@ -1,6 +1,6 @@
-import User from "../models/user"
-import RegisterUser from "../pages/registerUser"
-import AddContactPage from "../pages/addContactPage"
+import User from "../../models/user"
+import RegisterUser from "../../pages/registerUser"
+import AddContactPage from "../../pages/addContactPage"
 
 describe("Add contact using API", () => {
   let user: User

@@ -1,5 +1,6 @@
 import loginSelectors from '../selectors/login.sel'
 import loginData from "../fixtures/loginData.cy"
+import loginAPI from '../api/logInAPI'
 
 export default class LogInPage {
     private get emailInputField() {
@@ -28,5 +29,9 @@ export default class LogInPage {
         cy.get(this.passwordInputField).type(loginData.password)
         cy.get(this.submitButton).click()
         cy.get(this.header).should('have.text', 'Contact List')
+    }
+
+    logInUsingAPI(){
+        return new loginAPI().apiLogIn()
     }
 }
