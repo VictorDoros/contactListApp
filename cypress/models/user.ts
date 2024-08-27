@@ -18,7 +18,7 @@ export default class User {
     this.lastName = faker.person.lastName()
     this.email = faker.internet.email()
     this.password = "Test1234"
-    this.dateOfBirth = '1970-12-12'
+    this.dateOfBirth = faker.date.between({from: "1960/01/01", to: "2006/12/31"}).toLocaleDateString('en-CA')
     this.phone = faker.string.octal({length: {min:7, max: 12}, prefix: "00"})
     this.streetAddress = faker.location.street()
     this.city = faker.location.city()
