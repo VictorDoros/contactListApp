@@ -1,7 +1,7 @@
 import User from "../models/user";
 export default class AddContactAPI {
     apiAddContact(user: User){
-        cy.api({
+        cy.step("Add a contatc using the API").api({
             method: "POST",
             url: "/contacts",
             body: {

@@ -20,14 +20,24 @@ export default class LogInPage {
     }
 
     loadLoginPage() {
+        cy.step("Load the page")
         cy.visit('/')
+
+        cy.step("Confirm that the page has been loaded")
         cy.get(this.header).should('have.text', 'Contact List App')
     }
 
     logIn(){
+        cy.step("Fill in the email field")
         cy.get(this.emailInputField).type(loginData.email)
+
+        cy.step("Fill in the password field")
         cy.get(this.passwordInputField).type(loginData.password)
+
+        cy.step("Click on [Submit] button")
         cy.get(this.submitButton).click()
+
+        cy.step("Confirm that user has logged in")
         cy.get(this.header).should('have.text', 'Contact List')
     }
 

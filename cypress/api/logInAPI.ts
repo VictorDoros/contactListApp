@@ -3,7 +3,7 @@ import testdata from "../fixtures/loginData.cy"
 
 export default class LogInAPI {
     apiLogIn(){
-        cy.api({
+        cy.step("Login using the API").api({
             method: 'POST',
             url: '/users/login',
             body: {
