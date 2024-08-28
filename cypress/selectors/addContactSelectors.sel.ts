@@ -10,5 +10,5 @@ export default {
   postalCodeField: "#postalCode",
   countryField: "#country",
   submitButton: "#submit",
-  error: "#error"
+  error: "#error",
 }

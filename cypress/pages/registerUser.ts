@@ -3,6 +3,10 @@ import User from "../models/user"
 import selectors from "../selectors/register.sel"
 
 export default class RegisterUser {
+  private get cancelButton() {
+    return selectors.cancelButton
+  }
+
   private get firstNameInput() {
     return selectors.firstNameField
   }
@@ -41,7 +45,9 @@ export default class RegisterUser {
 
     cy.step("Click on [Sign in] button")
     cy.get(this.signUpButton).click()
+  }
 
+  checkRegisterPage() {
     cy.step("Confirm that user has been redirected to the registration page")
     cy.get(this.header).should("have.text", "Add User")
   }
@@ -66,6 +72,11 @@ export default class RegisterUser {
       "Confirm that the user has successfully registered and the user's page is displayed"
     )
     cy.get(this.header).should("have.text", "Contact List")
+  }
+
+  cancelRegister() {
+    cy.step("Cancel the registration")
+    cy.get(this.cancelButton).click()
   }
 
   registerUser_noData() {

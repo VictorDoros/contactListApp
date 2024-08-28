@@ -9,6 +9,7 @@ describe("Log in", () => {
 
   it("Should be able to log in", () => {
     logInPage.loadLoginPage()
+    logInPage.checkLoginPage()
     logInPage.logIn()
   })
 })

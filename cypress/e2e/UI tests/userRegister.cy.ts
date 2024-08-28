@@ -1,4 +1,5 @@
 import User from "../../models/user"
+import LogInPage from "../../pages/loginPage"
 import RegisterUser from "../../pages/registerUser"
 import registerData from "../../fixtures/registerData.cy"
 import basicData from "../../support/basicData"
@@ -6,15 +7,22 @@ import basicData from "../../support/basicData"
 describe("Register user", () => {
   let user: User
   let registerUser: RegisterUser
+  let loginPage = new LogInPage()
 
   beforeEach(() => {
     user = new User()
     registerUser = new RegisterUser()
     registerUser.loadRegisterPage()
+    registerUser.checkRegisterPage()
   })
 
   it("Should be able to register from UI", () => {
     registerUser.registerUser(user)
+  })
+
+  it("Should be able to cancel the registration", () => {
+    registerUser.cancelRegister()
+    loginPage.checkLoginPage()
   })
 
   it("Should display the corresponding error when submiting with no data", () => {
