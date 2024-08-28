@@ -1,5 +1,5 @@
+import User from "../models/user"
 import "cypress-plugin-api"
-import testdata from "../fixtures/loginData.cy"
 
 export default class LogInAPI {
     apiLogIn(){
@@ -7,8 +7,8 @@ export default class LogInAPI {
             method: 'POST',
             url: '/users/login',
             body: {
-                "email": testdata.email,
-                "password": testdata.password
+                "email": new User().getStaticEmail(),
+                "password": new User().getPassword()
             }
         }).then((response) => {
             expect(response.status).eq(200)

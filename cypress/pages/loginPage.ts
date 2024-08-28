@@ -1,5 +1,5 @@
+import User from '../models/user'
 import loginSelectors from '../selectors/login.sel'
-import loginData from "../fixtures/loginData.cy"
 import loginAPI from '../api/logInAPI'
 
 export default class LogInPage {
@@ -29,10 +29,10 @@ export default class LogInPage {
 
     logIn(){
         cy.step("Fill in the email field")
-        cy.get(this.emailInputField).type(loginData.email)
+        cy.get(this.emailInputField).type(new User().getStaticEmail())
 
         cy.step("Fill in the password field")
-        cy.get(this.passwordInputField).type(loginData.password)
+        cy.get(this.passwordInputField).type(new User().getPassword())
 
         cy.step("Click on [Submit] button")
         cy.get(this.submitButton).click()

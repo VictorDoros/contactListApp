@@ -17,7 +17,7 @@ describe("Register user", () => {
     registerUser.registerUser(user)
   })
 
-  it("Should display the error when submiting with no data", () => {
+  it("Should display the corresponding error when submiting with no data", () => {
     registerUser.registerUser_noData()
     registerUser.getError(
       basicData.stateData.beVisible,
@@ -25,119 +25,119 @@ describe("Register user", () => {
     )
   })
 
-  it("Should display the error when submiting with first name only", () => {
-    registerUser.registerUser_onlyFirstName(user)
+  it("Should display the corresponding error when submitting with first name only", () => {
+    registerUser.registerUser_firstName(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noLastNameEmailPassword
     )
   })
 
-  it("Should display the error when submiting with last name only", () => {
-    registerUser.registerUser_onlyLastName(user)
+  it("Should display the corresponding error when submitting with last name only", () => {
+    registerUser.registerUser_lastName(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstNameEmailPassword
     )
   })
 
-  it("Should display the error when submiting with first and last name only", () => {
-    registerUser.registerUser_onlyFirstLastName(user)
+  it("Should display the corresponding error when submitting with first and last name only", () => {
+    registerUser.registerUser_firstLastName(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noEmailPassword
     )
   })
 
-  it("Should display the error when submiting with email only", () => {
-    registerUser.registerUser_onlyEmail(user)
+  it("Should display the corresponding error when submitting with email only", () => {
+    registerUser.registerUser_email(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstLastNamePassword
     )
   })
 
-  it("Should display the error when submiting with first name and email only", () => {
-    registerUser.registerUser_onlyFirstNameEmail(user)
+  it("Should display the corresponding error when submitting with first name and email only", () => {
+    registerUser.registerUser_firstNameEmail(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noLastNamePassword
     )
   })
 
-  it("Should display the error when submiting with last name and email only", () => {
-    registerUser.registerUser_onlyLastNameEmail(user)
+  it("Should display the corresponding error when submitting with last name and email only", () => {
+    registerUser.registerUser_lastNameEmail(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstNamePassword
     )
   })
 
-  it("Should display the error when submiting with first name, last name and email only", () => {
-    registerUser.registerUser_onlyFirstLastNameEmail(user)
+  it("Should display the corresponding error when submitting with first name, last name and email only", () => {
+    registerUser.registerUser_firstLastNameEmail(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noPassword
     )
   })
 
-  it("Should display the error when submiting with password only", () => {
-    registerUser.registerUser_onlyPassword(user)
+  it("Should display the corresponding error when submitting with password only", () => {
+    registerUser.registerUser_password(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstLastNameEmail
     )
   })
 
-  it("Should display the error when submiting with first name and password only", () => {
-    registerUser.registerUser_onlyFirstNamePassword(user)
+  it("Should display the corresponding error when submitting with first name and password only", () => {
+    registerUser.registerUser_firstNamePassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noLastNameEmail
     )
   })
 
-  it("Should display the error when submiting with last name and password only", () => {
-    registerUser.registerUser_onlyLastNamePassword(user)
+  it("Should display the corresponding error when submitting with last name and password only", () => {
+    registerUser.registerUser_lastNamePassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstNameEmail
     )
   })
 
-  it("Should display the error when submiting with first name, last name and password only", () => {
-    registerUser.registerUser_onlyFirstLastNamePassword(user)
+  it("Should display the corresponding error when submitting with first name, last name and password only", () => {
+    registerUser.registerUser_firstLastNamePassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.invalid_noEmail
     )
   })
 
-  it("Should display the error when submiting with email and password only", () => {
-    registerUser.registerUser_onlyEmailPassword(user)
+  it("Should display the corresponding error when submitting with email and password only", () => {
+    registerUser.registerUser_emailPassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstLastName
     )
   })
 
-  it("Should display the error when submiting with first name, email and password only", () => {
-    registerUser.registerUser_onlyFirstNameEmailPassword(user)
+  it("Should display the corresponding error when submitting with first name, email and password only", () => {
+    registerUser.registerUser_firstNameEmailPassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noLastName
     )
   })
 
-  it("Should display the error when submiting with last name, email and password only", () => {
-    registerUser.registerUser_onlyLastNameEmailPassword(user)
+  it("Should display the corresponding error when submitting with last name, email and password only", () => {
+    registerUser.registerUser_lastNameEmailPassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
       registerData.errorMessages.noFirstName
     )
   })
 
-  it("Should display the error when submiting with invalid password", () => {
+  it("Should display the corresponding error when submitting with invalid password", () => {
     registerUser.registerUser_invalidPassword(user)
     registerUser.getError(
       basicData.stateData.beVisible,
@@ -145,7 +145,7 @@ describe("Register user", () => {
     )
   })
 
-  it("Should display the error when submiting with invalid email", () => {
+  it("Should display the corresponding error when submitting with invalid email", () => {
     registerUser.registerUser_invalidEmail(user)
     registerUser.getError(
       basicData.stateData.beVisible,
@@ -153,7 +153,7 @@ describe("Register user", () => {
     )
   })
 
-  it("Should display the error when submiting with existing email", () => {
+  it("Should display the corresponding error when submitting with existing email", () => {
     registerUser.registerUser_existingEmail(user)
     registerUser.getError(
       basicData.stateData.beVisible,

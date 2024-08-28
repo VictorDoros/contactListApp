@@ -23,8 +23,4 @@ describe("Add contact", () => {
 
     addContactPage.checkError().should("not.exist")
   })
-
-  it.skip("Should be able to edit the contact", () => {
-    
-  })
 })
