@@ -4,7 +4,9 @@ export default class User {
   private firstName: string
   private lastName: string
   private email: string
+  private invalidEmail: string
   private password: string
+  private invalidPassword: string
   private dateOfBirth: string
   private phone: string
   private streetAddress: string
@@ -17,7 +19,9 @@ export default class User {
     this.firstName = faker.person.firstName()
     this.lastName = faker.person.lastName()
     this.email = faker.internet.email()
+    this.invalidEmail = "email.com"
     this.password = "Test1234"
+    this.invalidPassword = "123"
     this.dateOfBirth = faker.date.between({from: "1960/01/01", to: "2006/12/31"}).toLocaleDateString('en-CA')
     this.phone = faker.string.octal({length: {min:7, max: 12}, prefix: "00"})
     this.streetAddress = faker.location.street()
@@ -37,9 +41,15 @@ export default class User {
   getEmail() {
     return this.email
   }
+  getInvalidEmail() {
+    return this.invalidEmail
+  }
 
   getPassword() {
     return this.password
+  }
+  getInvalidPassword() {
+    return this.invalidPassword
   }
 
   getDateOfBirth() {

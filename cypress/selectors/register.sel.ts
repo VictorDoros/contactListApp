@@ -5,5 +5,6 @@ export default {
    passwordField: "#password",
    signUpButton: "#signup",
    submitButton: "#submit",
-   header: "h1"
+   header: "h1",
+   error: "#error"
 }
