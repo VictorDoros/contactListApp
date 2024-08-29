@@ -1,7 +1,7 @@
 import User from "../../models/user"
 import LogInPage from "../../pages/loginPage"
 import RegisterUser from "../../pages/registerUser"
-import registerData from "../../fixtures/registerData.cy"
+import registerData from "../../fixtures/registerData"
 import basicData from "../../support/basicData"
 
 describe("Register user", () => {

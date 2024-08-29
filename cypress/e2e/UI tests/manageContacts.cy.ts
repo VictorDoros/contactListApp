@@ -17,6 +17,8 @@ describe("Add contact", () => {
   it("Should be able to add a valid contact", () => {
     logInPage.loadLoginPage()
     logInPage.logIn()
+    logInPage.submitLogIn()
+    logInPage.checkUserLoggedIn
 
     addContactPage.loadAddContact()
     addContactPage.addContact(user)

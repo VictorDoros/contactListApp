@@ -12,6 +12,8 @@ export default class UserAPI {
         email: user.getEmail(),
         password: user.getPassword(),
       },
+    }).then((response) => {
+      expect(response.status).to.eq(201)
     })
   }
 }
