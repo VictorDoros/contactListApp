@@ -11,4 +11,5 @@ export default {
   countryField: "#country",
   submitButton: "#submit",
   error: "#error",
+  rowsNewContact: "table tr td:visible"
 }
