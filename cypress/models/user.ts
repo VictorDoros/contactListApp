@@ -2,28 +2,19 @@ import { faker } from "@faker-js/faker"
 
 export default class User {
   private firstName: string
-  private firstNameSet: string
   private lastName: string
-  private lastNameSet: string
   private email: string
-  private emailSet: string
   private invalidEmail: string
   private staticEmail: string
   private password: string
-  private passwordSet: string
   private invalidPassword: string
   private dateOfBirth: string
-  private dateOfBirthSet: string
   private phone: string
   private phoneSet: string
   private streetAddress: string
-  private streetAddressSet: string
   private city: string
-  private citySet: string
   private postalCode: string
-  private postalCodeSet: string
   private country: string
-  private countrySet: string
   private token: string
 
   constructor() {
@@ -45,54 +36,18 @@ export default class User {
     this.city = faker.location.city().trim()
     this.postalCode = faker.location.zipCode().trim()
     this.country = faker.location.country()
-
-    //
-    this.firstNameSet = this.firstName
-    this.lastNameSet = this.lastName
-    this.emailSet = this.email
-    this.passwordSet = this.password
-    this.dateOfBirthSet = this.dateOfBirth
-    this.phoneSet = this.phone
-    this.streetAddressSet = this.streetAddress
-    this.citySet = this.city
-    this.postalCodeSet = this.postalCode
-    this.countrySet = this.country
   }
 
   getFirstName() {
     return this.firstName
   }
 
-  getFirstNameSet() {
-    return this.firstNameSet
-  }
-
-  setFirstName(firstNameSet: string) {
-    this.firstNameSet = firstNameSet
-  }
-
   getLastName() {
     return this.lastName
   }
 
-  getLastNameSet() {
-    return this.lastNameSet
-  }
-
-  setLastName(lastNameSet: string) {
-    this.lastNameSet = lastNameSet
-  }
-
   getEmail() {
     return this.email.toLowerCase()
-  }
-
-  getEmailSet() {
-    return this.emailSet
-  }
-
-  setEmail(emailSet: string) {
-    this.emailSet = emailSet
   }
 
   getStaticEmail() {
@@ -111,24 +66,8 @@ export default class User {
     return this.invalidPassword
   }
 
-  getPasswordSet() {
-    return this.passwordSet
-  }
-
-  setPassword(passwordSet: string) {
-    this.passwordSet = passwordSet
-  }
-
   getDateOfBirth() {
     return this.dateOfBirth
-  }
-
-  getDateOfBirthSet() {
-    return this.dateOfBirthSet
-  }
-
-  setDateOfBirth(dateOfBirthSet: string) {
-    this.dateOfBirthSet = dateOfBirthSet
   }
 
 
@@ -148,48 +87,16 @@ export default class User {
     return this.streetAddress
   }
 
-  getStreetAddressSet() {
-    return this.streetAddressSet
-  }
-
-  setStreetAddress(streetAddressSet: string) {
-    this.streetAddressSet = streetAddressSet
-  }
-
   getCity() {
     return this.city
-  }
-
-  getCitySet() {
-    return this.citySet
-  }
-
-  setCity(citySet: string) {
-    this.citySet = citySet
   }
 
   getPostalCode() {
     return this.postalCode
   }
 
-  getPostalCodeSet() {
-    return this.postalCodeSet
-  }
-
-  setPostalCode(postalCodeSet: string) {
-    this.postalCodeSet = postalCodeSet
-  }
-
   getCountry() {
     return this.country
-  }
-
-  getCountrySet() {
-    return this.countrySet
-  }
-
-  setCountry(countrySet: string) {
-    this.countrySet = countrySet
   }
 
   getToken() {
