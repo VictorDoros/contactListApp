@@ -16,7 +16,8 @@ export default {
   firstColumnsOfRow: "table tr td:nth-child(2)",
   editButton: "#edit-contact",
   returnButton: "#return",
-  deleteButton: "#delete"
+  deleteButton: "#delete",
+  cancelButton: "#cancel"
 
 
 }

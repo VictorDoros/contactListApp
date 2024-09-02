@@ -48,4 +48,17 @@ describe("Add contact", () => {
     addContactPage.getDelete()
     addContactPage.getNoRowsInTable()
   })
+
+  it.only("Should be able to cancel the edit contact", () => {
+    addContactPage.loadAddContact()
+    addContactPage.addContact(user)
+    addContactPage.getSubmit()
+    addContactPage.confirmAddContact(user)
+    addContactPage.loadContactDetails()
+    addContactPage.loadEditContact()
+    addContactPage.editContact(user)
+    addContactPage.getCancel()
+    addContactPage.getReturn()
+    addContactPage.confirmAddContact(user)
+  })
 })

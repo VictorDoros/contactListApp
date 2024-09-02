@@ -77,6 +77,10 @@ export default class AddContactPage {
     return addContactSelectorsSel.deleteButton
   }
 
+  private get cancelButton() {
+    return addContactSelectors.cancelButton
+  }
+
   loadAddContact() {
     cy.step("Go to contacts page")
     cy.get(this.addContactButton).click()
@@ -112,7 +116,7 @@ export default class AddContactPage {
   }
 
   confirmAddContact(user: User) {
-    cy.step("Confirm the informatiom from the edited contact")
+    cy.step("Confirm the informatiom from the edited contact OR the contact was not edited after canceling the edit contact")
     cy.get(this.rowsNewContact)
       .map("innerText")
       .then((arrayResults) => {
@@ -135,7 +139,9 @@ export default class AddContactPage {
     cy.get(this.rowsNewContact)
       .map("innerText")
       .then((arrayResults) => {
-        expect(arrayResults[0]).to.eq("Roberto Carlos")
+        expect(arrayResults[0]).to.eq(
+          `${user.getStaticFirstName()} ${user.getStaticLastName()}`
+        )
         expect(arrayResults[1]).to.eq(user.getDateOfBirth())
         expect(arrayResults[2]).to.eq(user.getEmail())
         expect(arrayResults[3]).to.eq(user.getPhone())
@@ -182,6 +188,11 @@ export default class AddContactPage {
   getDelete() {
     cy.step("Delete the contact")
     cy.get(this.deleteButton).click()
+  }
+
+  getCancel() {
+    cy.step("Cancel the edit contact")
+    cy.get(this.cancelButton).click()
   }
 
   getNoRowsInTable() {
