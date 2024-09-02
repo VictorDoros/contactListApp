@@ -2,7 +2,9 @@ import { faker } from "@faker-js/faker"
 
 export default class User {
   private firstName: string
+  private staticFirstname: string
   private lastName: string
+  private staticLastName: string
   private email: string
   private invalidEmail: string
   private staticEmail: string
@@ -19,7 +21,9 @@ export default class User {
 
   constructor() {
     this.firstName = faker.person.firstName()
+    this.staticFirstname = "Roberto"
     this.lastName = faker.person.lastName()
+    this.staticLastName = "Carlos"
     this.email = faker.internet.email()
     this.invalidEmail = "email.com"
     this.staticEmail = "miha123@email.com"
@@ -42,8 +46,16 @@ export default class User {
     return this.firstName
   }
 
+  getStaticFirstName() {
+    return this.staticFirstname
+  }
+
   getLastName() {
     return this.lastName
+  }
+
+  getStaticLastName() {
+    return this.staticLastName
   }
 
   getEmail() {

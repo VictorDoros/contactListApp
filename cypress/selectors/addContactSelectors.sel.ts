@@ -11,5 +11,12 @@ export default {
   countryField: "#country",
   submitButton: "#submit",
   error: "#error",
-  rowsNewContact: "table tr td:visible"
+  rowsNewContact: "table tr td:visible",
+  header: "h1",
+  firstColumnsOfRow: "table tr td:nth-child(2)",
+  editButton: "#edit-contact",
+  returnButton: "#return",
+  deleteButton: "#delete"
+
+
 }

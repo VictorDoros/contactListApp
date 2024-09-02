@@ -2,6 +2,7 @@ import User from "../models/user"
 import addContactAPI from "../api/addContactAPI"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import "cypress-map"
+import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
 
 export default class AddContactPage {
   private get addContactButton() {
@@ -56,60 +57,142 @@ export default class AddContactPage {
     return addContactSelectors.rowsNewContact
   }
 
+  private get firstColumnOfRow() {
+    return addContactSelectors.firstColumnsOfRow
+  }
+
+  private get header() {
+    return addContactSelectors.header
+  }
+
+  private get editButton() {
+    return addContactSelectors.editButton
+  }
+
+  private get returnButton() {
+    return addContactSelectors.returnButton
+  }
+
+  private get deleteButton() {
+    return addContactSelectorsSel.deleteButton
+  }
+
   loadAddContact() {
     cy.step("Go to contacts page")
     cy.get(this.addContactButton).click()
   }
 
   addContact(user: User) {
-    return cy.then(() => {
-      cy.step("Fill in the first name field")
-      cy.get(this.firstNameField).type(user.getFirstName())
+    cy.step("Fill in the first name field")
+    cy.get(this.firstNameField).type(user.getFirstName())
 
-      cy.step("Fill in the last name field")
-      cy.get(this.lastNameField).type(user.getLastName())
+    cy.step("Fill in the last name field")
+    cy.get(this.lastNameField).type(user.getLastName())
 
-      cy.step("Fill in the date of birth field")
-      cy.get(this.birthDateField).type(user.getDateOfBirth())
+    cy.step("Fill in the date of birth field")
+    cy.get(this.birthDateField).type(user.getDateOfBirth())
 
-      cy.step("Fill in the email field")
-      cy.get(this.emailField).type(user.getEmail())
+    cy.step("Fill in the email field")
+    cy.get(this.emailField).type(user.getEmail())
 
-      cy.step("Fill in the phone field")
-      cy.get(this.phoneField).type(user.getPhone())
+    cy.step("Fill in the phone field")
+    cy.get(this.phoneField).type(user.getPhone())
 
-      cy.step("Fill in the address field")
-      cy.get(this.streetField).type(user.getStreetAddress())
+    cy.step("Fill in the address field")
+    cy.get(this.streetField).type(user.getStreetAddress())
 
-      cy.step("Fill in the city field")
-      cy.get(this.cityField).type(user.getCity())
+    cy.step("Fill in the city field")
+    cy.get(this.cityField).type(user.getCity())
 
-      cy.step("Fill in the postal code field")
-      cy.get(this.postalCodeField).type(user.getPostalCode())
+    cy.step("Fill in the postal code field")
+    cy.get(this.postalCodeField).type(user.getPostalCode())
 
-      cy.step("Fill in the country field")
-      cy.get(this.countryField).type(user.getCountry())
-
-      cy.step("Click the [Submit] button")
-      cy.get(this.submitButton).click()
-    })
+    cy.step("Fill in the country field")
+    cy.get(this.countryField).type(user.getCountry())
   }
 
   confirmAddContact(user: User) {
+    cy.step("Confirm the informatiom from the edited contact")
     cy.get(this.rowsNewContact)
       .map("innerText")
       .then((arrayResults) => {
-        expect(arrayResults[0]).to.include(
+        expect(arrayResults[0]).to.eq(
           `${user.getFirstName()} ${user.getLastName()}`
         )
-        expect(arrayResults[1]).to.include(user.getDateOfBirth())
-        expect(arrayResults[2]).to.include(user.getEmail())
-        expect(arrayResults[3]).to.include(user.getPhone())
+        expect(arrayResults[1]).to.eq(user.getDateOfBirth())
+        expect(arrayResults[2]).to.eq(user.getEmail())
+        expect(arrayResults[3]).to.eq(user.getPhone())
         expect(arrayResults[4]).to.include(user.getStreetAddress())
         expect(arrayResults[5]).to.include(
           `${user.getCity()} ${user.getPostalCode()}`
         )
-        expect(arrayResults[6]).to.include(user.getCountry())
+        expect(arrayResults[6]).to.eq(user.getCountry())
+      })
+  }
+
+  confirmEditContact(user: User) {
+    cy.step("Confirm the informatiom from the edited contact")
+    cy.get(this.rowsNewContact)
+      .map("innerText")
+      .then((arrayResults) => {
+        expect(arrayResults[0]).to.eq("Roberto Carlos")
+        expect(arrayResults[1]).to.eq(user.getDateOfBirth())
+        expect(arrayResults[2]).to.eq(user.getEmail())
+        expect(arrayResults[3]).to.eq(user.getPhone())
+        expect(arrayResults[4]).to.include(user.getStreetAddress())
+        expect(arrayResults[5]).to.include(
+          `${user.getCity()} ${user.getPostalCode()}`
+        )
+        expect(arrayResults[6]).to.eq(user.getCountry())
+      })
+  }
+
+  loadContactDetails() {
+    cy.step("Load the details of the contact")
+    cy.get(this.firstColumnOfRow).click()
+    cy.get(this.header).should("have.text", "Contact Details")
+  }
+
+  loadEditContact() {
+    cy.step("Load the edit mode of the contact")
+    cy.get(this.editButton).click()
+    cy.get(this.header).should("have.text", "Edit Contact")
+  }
+
+  editContact(user: User) {
+    cy.step("Edit the contact e.g. change the 'First' and 'Last' name")
+    cy.get(this.firstNameField, { timeout: 10000 }).should(
+      "have.value",
+      user.getFirstName()
+    )
+    cy.get(this.firstNameField).clear().type(user.getStaticFirstName())
+    cy.get(this.lastNameField).clear().type(user.getStaticLastName())
+  }
+
+  getSubmit() {
+    cy.step("Submit the changes")
+    cy.get(this.submitButton).click()
+  }
+
+  getReturn() {
+    cy.step("Return to the contact list")
+    cy.get(this.returnButton).click()
+  }
+
+  getDelete() {
+    cy.step("Delete the contact")
+    cy.get(this.deleteButton).click()
+  }
+
+  getNoRowsInTable() {
+    cy.step("Confirm that table has no rows")
+    cy.get("table")
+      .then((table) => {
+        let rows = table.find("tr td")
+        return rows.length
+      })
+      .then((numberRows) => {
+        expect(numberRows).to.eq(0)
       })
   }
 
