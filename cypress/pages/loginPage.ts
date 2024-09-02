@@ -1,6 +1,7 @@
 import User from "../models/user"
 import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
+import logoutSelctors from "../selectors/logout.sel"
 
 export default class LogInPage {
   private get emailInputField() {
@@ -23,6 +24,14 @@ export default class LogInPage {
     return loginSelectors.error
   }
 
+  private get logoutButton() {
+    return logoutSelctors.logoutButton
+  }
+
+  private get firstColumnFirstRow() {
+    return logoutSelctors.firstColumnOfFirstRow
+  }
+
   loadLoginPage() {
     cy.step("Load the page")
     cy.visit("/")
@@ -30,23 +39,23 @@ export default class LogInPage {
 
   checkLoginPage() {
     cy.step("Confirm that the page has been loaded")
-    cy.get(this.header).should("have.text", "Contact List App")
+    cy.get(this.header).invoke("text").should("eq", "Contact List App")
   }
 
-  logIn() {
+  logIn(user: User) {
     cy.step("Fill in the email field")
-    cy.get(this.emailInputField).type(new User().getStaticEmail())
+    cy.get(this.emailInputField).type(user.getStaticEmail())
 
     cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(new User().getPassword())
+    cy.get(this.passwordInputField).type(user.getPassword())
   }
 
-  logInInvalidCredentials() {
+  logInInvalidCredentials(user: User) {
     cy.step("Fill in the email field with invalid value")
-    cy.get(this.emailInputField).type(new User().getEmail())
+    cy.get(this.emailInputField).type(user.getEmail())
 
     cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(new User().getPassword())
+    cy.get(this.passwordInputField).type(user.getPassword())
   }
 
   submitLogIn() {
@@ -56,7 +65,7 @@ export default class LogInPage {
 
   checkUserLoggedIn() {
     cy.step("Confirm that user has logged in")
-    cy.get(this.header).should("have.text", "Contact List")
+    cy.get(this.header).invoke('text').should("eq", "Contact List")
   }
 
   checkError(state: string, text: string) {
@@ -65,6 +74,17 @@ export default class LogInPage {
       .get(this.error)
       .should(state)
       .and("have.text", text)
+  }
+
+  getLogout(){
+    cy.step("Logout from the APP")
+    cy.get(this.logoutButton).click()
+  }
+
+  loadContactDetails() {
+    cy.step("Load the details of the contact")
+    cy.get(this.firstColumnFirstRow).click()
+    cy.get(this.header).invoke("text").should("eq", "Contact Details")
   }
 
   logInUsingAPI() {

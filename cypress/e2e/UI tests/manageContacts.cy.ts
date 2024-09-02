@@ -3,7 +3,7 @@ import User from "../../models/user"
 import AddContactPage from "../../pages/addContactPage"
 import RegisterUser from "../../pages/registerUser"
 
-describe("Add contact", () => {
+describe("Manage contacts", () => {
   let logInPage: LogInPage
   let user: User
   let addContactPage: AddContactPage
@@ -22,6 +22,7 @@ describe("Add contact", () => {
 
   it("Should be able to add a valid contact", () => {
     addContactPage.loadAddContact()
+    addContactPage.confirmAddContactPage()
     addContactPage.addContact(user)
     addContactPage.getSubmit()
     addContactPage.confirmAddContact(user)
@@ -29,6 +30,7 @@ describe("Add contact", () => {
 
   it("Should be able to edit the contact", () => {
     addContactPage.loadAddContact()
+    addContactPage.confirmAddContactPage()
     addContactPage.addContact(user)
     addContactPage.getSubmit()
     addContactPage.confirmAddContact(user)
@@ -42,6 +44,7 @@ describe("Add contact", () => {
 
   it("Should be able to delete the contact", () => {
     addContactPage.loadAddContact()
+    addContactPage.confirmAddContactPage()
     addContactPage.addContact(user)
     addContactPage.getSubmit()
     addContactPage.loadContactDetails()
@@ -49,8 +52,9 @@ describe("Add contact", () => {
     addContactPage.getNoRowsInTable()
   })
 
-  it.only("Should be able to cancel the edit contact", () => {
+  it("Should be able to cancel the edit contact", () => {
     addContactPage.loadAddContact()
+    addContactPage.confirmAddContactPage()
     addContactPage.addContact(user)
     addContactPage.getSubmit()
     addContactPage.confirmAddContact(user)

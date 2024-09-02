@@ -86,6 +86,11 @@ export default class AddContactPage {
     cy.get(this.addContactButton).click()
   }
 
+  confirmAddContactPage() {
+    cy.step("Confirm that the 'Add Contact' page has been loaded")
+    cy.get(this.header).invoke("text").should("eq", "Add Contact")
+  }
+
   addContact(user: User) {
     cy.step("Fill in the first name field")
     cy.get(this.firstNameField).type(user.getFirstName())
@@ -156,13 +161,13 @@ export default class AddContactPage {
   loadContactDetails() {
     cy.step("Load the details of the contact")
     cy.get(this.firstColumnOfRow).click()
-    cy.get(this.header).should("have.text", "Contact Details")
+    cy.get(this.header).invoke("text").should("eq", "Contact Details")
   }
 
   loadEditContact() {
     cy.step("Load the edit mode of the contact")
     cy.get(this.editButton).click()
-    cy.get(this.header).should("have.text", "Edit Contact")
+    cy.get(this.header).invoke("text").should("eq", "Edit Contact")
   }
 
   editContact(user: User) {

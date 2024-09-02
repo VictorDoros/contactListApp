@@ -49,7 +49,7 @@ export default class RegisterUser {
 
   checkRegisterPage() {
     cy.step("Confirm that user has been redirected to the registration page")
-    cy.get(this.header).should("have.text", "Add User")
+    cy.get(this.header).invoke("text").should("eq", "Add User")
   }
 
   registerUser(user: User) {
@@ -71,7 +71,7 @@ export default class RegisterUser {
     cy.step(
       "Confirm that the user has successfully registered and the user's page is displayed"
     )
-    cy.get(this.header).should("have.text", "Contact List")
+    cy.get(this.header).invoke("text").should("eq", "Contact List")
   }
 
   cancelRegister() {
