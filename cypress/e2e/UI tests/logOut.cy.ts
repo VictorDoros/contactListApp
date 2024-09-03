@@ -1,45 +1,45 @@
-import LogInPage from "../../pages/loginPage"
+import LogInLogOut from "../../pages/loginLogoutPage"
 import User from "../../models/user"
 import AddContactPage from "../../pages/addContactPage"
 
 describe("Log out", () => {
-  let loginPage: LogInPage
+  let loginLogout: LogInLogOut
   let user: User
   let addContactPage: AddContactPage
 
   beforeEach(() => {
-    loginPage = new LogInPage()
+    loginLogout = new LogInLogOut()
     user = new User()
     addContactPage = new AddContactPage()
 
-    loginPage.loadLoginPage()
-    loginPage.logIn(user)
-    loginPage.submitLogIn()
-    loginPage.checkUserLoggedIn()
+    loginLogout.loadLoginPage()
+    loginLogout.logIn(user)
+    loginLogout.submitLogIn()
+    loginLogout.checkUserLoggedIn()
   })
 
   it("Should be able to log out after log in", () => {
-    loginPage.getLogout()
-    loginPage.checkLoginPage()
+    loginLogout.getLogout()
+    loginLogout.checkLoginPage()
   })
 
   it("Should be able to log out from 'Add Contact' page", () => {
     addContactPage.loadAddContact()
     addContactPage.confirmAddContactPage()
-    loginPage.getLogout()
-    loginPage.checkLoginPage()
+    loginLogout.getLogout()
+    loginLogout.checkLoginPage()
   })
 
   it("Should be able to log out from 'Contact Details' page", () => {
-    loginPage.loadContactDetails()
-    loginPage.getLogout()
-    loginPage.checkLoginPage()
+    loginLogout.loadContactDetails()
+    loginLogout.getLogout()
+    loginLogout.checkLoginPage()
   })
 
   it("Should be able to log out from 'Edit Contact' page", () => {
-    loginPage.loadContactDetails()
+    loginLogout.loadContactDetails()
     addContactPage.loadEditContact()
-    loginPage.getLogout()
-    loginPage.checkLoginPage()
+    loginLogout.getLogout()
+    loginLogout.checkLoginPage()
   })
 })

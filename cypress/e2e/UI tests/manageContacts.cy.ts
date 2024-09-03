@@ -1,16 +1,16 @@
-import LogInPage from "../../pages/loginPage"
+import LogInLogOutPage from "../../pages/loginLogoutPage"
 import User from "../../models/user"
 import AddContactPage from "../../pages/addContactPage"
 import RegisterUser from "../../pages/registerUser"
 
 describe("Manage contacts", () => {
-  let logInPage: LogInPage
+  let logInLogOutPage: LogInLogOutPage
   let user: User
   let addContactPage: AddContactPage
   let registerUser: RegisterUser
 
   beforeEach(() => {
-    logInPage = new LogInPage()
+    logInLogOutPage = new LogInLogOutPage()
     user = new User()
     addContactPage = new AddContactPage()
     registerUser = new RegisterUser()

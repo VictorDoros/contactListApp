@@ -3,7 +3,7 @@ import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
 import logoutSelctors from "../selectors/logout.sel"
 
-export default class LogInPage {
+export default class LogInLogOutPage {
   private get emailInputField() {
     return loginSelectors.emailField
   }

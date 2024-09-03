@@ -1,33 +1,33 @@
-import LogInPage from "../../pages/loginPage"
+import LogInLogOut from "../../pages/loginLogoutPage"
 import basicData from "../../support/basicData"
 import logInData from "../../fixtures/logInData"
 import User from "../../models/user"
 
 describe("Log in", () => {
-  let logInPage: LogInPage
+  let logInLogOutPage: LogInLogOut
   let user: User
 
   beforeEach(() => {
-    logInPage = new LogInPage()
+    logInLogOutPage = new LogInLogOut()
     user = new User()
-    logInPage.loadLoginPage()
-    logInPage.checkLoginPage()
+    logInLogOutPage.loadLoginPage()
+    logInLogOutPage.checkLoginPage()
   })
 
   it("Should be able to log in", () => {
-    logInPage.logIn(user)
-    logInPage.submitLogIn()
-    logInPage.checkUserLoggedIn()
+    logInLogOutPage.logIn(user)
+    logInLogOutPage.submitLogIn()
+    logInLogOutPage.checkUserLoggedIn()
   })
 
   it("Should display the error when submitting with no credentials", () => {
-    logInPage.submitLogIn()
-    logInPage.checkError(basicData.stateData.beVisible, logInData.logInError)
+    logInLogOutPage.submitLogIn()
+    logInLogOutPage.checkError(basicData.stateData.beVisible, logInData.logInError)
   })
 
   it("Should display the error when submitting with invalid credentials", () => {
-    logInPage.logInInvalidCredentials(user)
-    logInPage.submitLogIn()
-    logInPage.checkError(basicData.stateData.beVisible, logInData.logInError)
+    logInLogOutPage.logInInvalidCredentials(user)
+    logInLogOutPage.submitLogIn()
+    logInLogOutPage.checkError(basicData.stateData.beVisible, logInData.logInError)
   })
 })

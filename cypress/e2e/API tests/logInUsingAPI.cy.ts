@@ -1,13 +1,13 @@
-import LogInPage from "../../pages/loginPage"
+import LogInLogOutPage from "../../pages/loginLogoutPage"
 
 describe("Log in", () => {
-  let loginPage: LogInPage
+  let loginLogoutPage: LogInLogOutPage
 
   beforeEach(() => {
-    loginPage = new LogInPage()
+    loginLogoutPage = new LogInLogOutPage()
   })
 
   it("Log in using API with valid account", () => {
-    loginPage.logInUsingAPI()
+    loginLogoutPage.logInUsingAPI()
   })
 })
