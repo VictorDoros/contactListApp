@@ -23,11 +23,6 @@ export default defineConfig({
       return config
     },
 
-    // The quality setting for the video compression, in Constant Rate Factor (CRF).
-    // The value can be false to disable compression or a value between 0 and 51,
-    // where a lower value results in better quality (at the expense of a higher file size).
-    videoCompression: 32,
-
     // Default height in pixels
     viewportHeight: 1080,
 
