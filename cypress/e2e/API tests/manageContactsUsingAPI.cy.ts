@@ -2,7 +2,7 @@ import User from "../../models/user"
 import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 
-describe("Add contact using API", () => {
+describe("Add contact using API", { tags: ["@api", "@manageContacts"] }, () => {
   let user: User
   let registerUser: RegisterUser
   let addContactPage: AddContactPage

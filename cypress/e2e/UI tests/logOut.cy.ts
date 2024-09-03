@@ -2,7 +2,7 @@ import LogInLogOut from "../../pages/loginLogoutPage"
 import User from "../../models/user"
 import AddContactPage from "../../pages/addContactPage"
 
-describe("Log out", () => {
+describe("Log out", { tags: ["@ui", "@logOut"] }, () => {
   let loginLogout: LogInLogOut
   let user: User
   let addContactPage: AddContactPage

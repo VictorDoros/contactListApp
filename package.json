@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/grep": "^4.1.0",
     "@faker-js/faker": "^8.4.1",
     "cypress": "^13.14.1",
     "cypress-map": "^1.40.0",

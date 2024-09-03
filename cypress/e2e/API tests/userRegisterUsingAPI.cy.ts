@@ -1,7 +1,7 @@
 import User from "../../models/user"
 import RegisterUser from "../../pages/registerUser"
 
-describe("Register user", () => {
+describe("Register user", { tags: ["@api", "@userRegister"] }, () => {
   let user: User
   let registerUser: RegisterUser
 

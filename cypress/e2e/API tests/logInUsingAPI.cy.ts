@@ -1,6 +1,6 @@
 import LogInLogOutPage from "../../pages/loginLogoutPage"
 
-describe("Log in", () => {
+describe("Log in", { tags: ["@api", "@login"] }, () => {
   let loginLogoutPage: LogInLogOutPage
 
   beforeEach(() => {

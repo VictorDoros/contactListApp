@@ -4,7 +4,7 @@ import RegisterUser from "../../pages/registerUser"
 import registerData from "../../fixtures/registerData"
 import basicData from "../../support/basicData"
 
-describe("Register user", () => {
+describe("Register user", { tags: ["@ui", "@userRegister"] }, () => {
   let user: User
   let registerUser: RegisterUser
   let loginLogoutPage = new LogInLogOutPage()
