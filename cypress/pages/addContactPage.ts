@@ -83,8 +83,6 @@ export default class AddContactPage {
   }
 
   loadAddContact() {
-    cy.step("Reach the page")
-    cy.visit(new Environment().getEnvironment())
     cy.step("Go to contacts page")
     cy.get(this.addContactButton).click()
   }
@@ -219,7 +217,7 @@ export default class AddContactPage {
     return cy.step("Check the error").get(this.error)
   }
 
-  addContactUsingAPI(user: User) {
-    return new addContactAPI().apiAddContact(user)
+  addContactUsingAPI(user: User, env: Environment) {
+    return new addContactAPI().apiAddContact(user, env)
   }
 }

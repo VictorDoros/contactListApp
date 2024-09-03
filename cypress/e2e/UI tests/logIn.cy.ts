@@ -2,15 +2,19 @@ import LogInLogOut from "../../pages/loginLogoutPage"
 import basicData from "../../support/basicData"
 import logInData from "../../fixtures/logInData"
 import User from "../../models/user"
+import Environment from "../../support/environment"
 
 describe("Log in", { tags: ["@ui", "@login"] }, () => {
   let logInLogOutPage: LogInLogOut
   let user: User
+  let env: Environment
 
   beforeEach(() => {
     logInLogOutPage = new LogInLogOut()
     user = new User()
-    logInLogOutPage.loadLoginPage()
+    env = new Environment()
+
+    logInLogOutPage.loadLoginPage(env)
     logInLogOutPage.checkLoginPage()
   })
 

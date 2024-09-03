@@ -3,16 +3,18 @@ import LogInLogOutPage from "../../pages/loginLogoutPage"
 import RegisterUser from "../../pages/registerUser"
 import registerData from "../../fixtures/registerData"
 import basicData from "../../support/basicData"
+import Environment from "../../support/environment"
 
 describe("Register user", { tags: ["@ui", "@userRegister"] }, () => {
   let user: User
   let registerUser: RegisterUser
   let loginLogoutPage = new LogInLogOutPage()
+  let env = new Environment()
 
   beforeEach(() => {
     user = new User()
     registerUser = new RegisterUser()
-    registerUser.loadRegisterPage()
+    registerUser.loadRegisterPage(env)
     registerUser.checkRegisterPage()
   })
 

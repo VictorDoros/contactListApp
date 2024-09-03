@@ -40,12 +40,9 @@ export default class RegisterUser {
     return selectors.error
   }
 
-  loadRegisterPage() {
+  loadRegisterPage(env: Environment) {
     cy.step("Reach the page")
-    cy.visit(new Environment().getEnvironment())
-
-    cy.step("Load the page")
-    cy.visit("/")
+    cy.visit(env.getEnvironment())
 
     cy.step("Click on [Sign in] button")
     cy.get(this.signUpButton).click()
@@ -301,8 +298,8 @@ export default class RegisterUser {
       .and("have.text", text)
   }
 
-  registerUsingAPI(user: User) {
-    return new UserAPI().register(user).then((response) => {
+  registerUsingAPI(user: User, env: Environment) {
+    return new UserAPI().register(user, env).then((response) => {
       user.setToken(response.body.token)
     })
   }

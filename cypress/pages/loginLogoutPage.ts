@@ -33,11 +33,9 @@ export default class LogInLogOutPage {
     return logoutSelctors.firstColumnOfFirstRow
   }
 
-  loadLoginPage() {
-    cy.step("Reach the page")
-    cy.visit(new Environment().getEnvironment())
+  loadLoginPage(env: Environment) {
     cy.step("Load the page")
-    cy.visit("/")
+    cy.visit(env.getEnvironment())
   }
 
   checkLoginPage() {
@@ -90,7 +88,7 @@ export default class LogInLogOutPage {
     cy.get(this.header).invoke("text").should("eq", "Contact Details")
   }
 
-  logInUsingAPI() {
-    return new loginAPI().apiLogIn()
+  logInUsingAPI(user: User, env: Environment) {
+    return new loginAPI().apiLogIn(user, env)
   }
 }

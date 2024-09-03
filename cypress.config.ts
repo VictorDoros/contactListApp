@@ -33,6 +33,6 @@ export default defineConfig({
     video: false,
 
     //Setting the base url
-    baseUrl: "https://thinking-tester-contact-list.herokuapp.com",
+    //baseUrl: "https://thinking-tester-contact-list.herokuapp.com",
   },
 })

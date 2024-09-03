@@ -1,9 +1,10 @@
 import User from "../models/user"
+import Environment from "../support/environment"
 export default class AddContactAPI {
-  apiAddContact(user: User) {
+  apiAddContact(user: User, env: Environment) {
     cy.step("Add a contatc using the API").api({
       method: "POST",
-      url: "/contacts",
+      url: env.getEnvironment() + "/contacts",
       body: {
         firstName: user.getFirstName(),
         lastName: user.getLastName(),
