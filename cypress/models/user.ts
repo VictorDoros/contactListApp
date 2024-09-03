@@ -82,7 +82,6 @@ export default class User {
     return this.dateOfBirth
   }
 
-
   getPhone() {
     return this.phone
   }

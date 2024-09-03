@@ -1,19 +1,19 @@
-import LogInLogOut from "../../pages/loginLogoutPage"
 import User from "../../models/user"
-import AddContactPage from "../../pages/addContactPage"
 import Environment from "../../support/environment"
+import LogInLogOut from "../../pages/loginLogoutPage"
+import AddContactPage from "../../pages/addContactPage"
 
 describe("Log out", { tags: ["@ui", "@logOut"] }, () => {
-  let loginLogout: LogInLogOut
   let user: User
-  let addContactPage: AddContactPage
+  let loginLogout: LogInLogOut
   let env: Environment
+  let addContactPage: AddContactPage
 
   beforeEach(() => {
-    loginLogout = new LogInLogOut()
     user = new User()
-    addContactPage = new AddContactPage()
     env = new Environment()
+    loginLogout = new LogInLogOut()
+    addContactPage = new AddContactPage()
 
     loginLogout.loadLoginPage(env)
     loginLogout.logIn(user)

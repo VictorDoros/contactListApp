@@ -1,11 +1,11 @@
 import User from "../../models/user"
-import RegisterUser from "../../pages/registerUser"
 import Environment from "../../support/environment"
+import RegisterUser from "../../pages/registerUser"
 
 describe("Register user", { tags: ["@api", "@userRegister"] }, () => {
   let user: User
-  let registerUser: RegisterUser
   let env: Environment
+  let registerUser: RegisterUser
 
   beforeEach(() => {
     user = new User()

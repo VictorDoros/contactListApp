@@ -1,13 +1,13 @@
 import User from "../../models/user"
+import Environment from "../../support/environment"
 import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
-import Environment from "../../support/environment"
 
 describe("Add contact using API", { tags: ["@api", "@manageContacts"] }, () => {
   let user: User
+  let env: Environment
   let registerUser: RegisterUser
   let addContactPage: AddContactPage
-  let env: Environment
 
   beforeEach(() => {
     user = new User()

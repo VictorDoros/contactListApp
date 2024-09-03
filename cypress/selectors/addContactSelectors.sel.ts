@@ -17,7 +17,5 @@ export default {
   editButton: "#edit-contact",
   returnButton: "#return",
   deleteButton: "#delete",
-  cancelButton: "#cancel"
-
-
+  cancelButton: "#cancel",
 }

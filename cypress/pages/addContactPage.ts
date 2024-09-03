@@ -1,5 +1,5 @@
-import Environment from "../support/environment"
 import User from "../models/user"
+import Environment from "../support/environment"
 import addContactAPI from "../api/addContactAPI"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
@@ -122,7 +122,9 @@ export default class AddContactPage {
   }
 
   confirmAddContact(user: User) {
-    cy.step("Confirm the informatiom from the edited contact OR the contact was not edited after canceling the edit contact")
+    cy.step(
+      "Confirm the informatiom from the edited contact OR the contact was not edited after canceling the edit contact"
+    )
     cy.get(this.rowsNewContact)
       .map("innerText")
       .then((arrayResults) => {

@@ -1,6 +1,6 @@
-import Environment from "../support/environment"
-import UserAPI from "../api/registerAPI"
 import User from "../models/user"
+import UserAPI from "../api/registerAPI"
+import Environment from "../support/environment"
 import selectors from "../selectors/register.sel"
 
 export default class RegisterUser {

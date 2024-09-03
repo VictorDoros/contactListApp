@@ -1,19 +1,19 @@
 import User from "../../models/user"
-import AddContactPage from "../../pages/addContactPage"
-import RegisterUser from "../../pages/registerUser"
 import Environment from "../../support/environment"
+import RegisterUser from "../../pages/registerUser"
+import AddContactPage from "../../pages/addContactPage"
 
 describe("Manage contacts", { tags: ["@ui", "@manageContacts"] }, () => {
   let user: User
-  let addContactPage: AddContactPage
-  let registerUser: RegisterUser
   let env: Environment
+  let registerUser: RegisterUser
+  let addContactPage: AddContactPage
 
   beforeEach(() => {
     user = new User()
-    addContactPage = new AddContactPage()
-    registerUser = new RegisterUser()
     env = new Environment()
+    registerUser = new RegisterUser()
+    addContactPage = new AddContactPage()
 
     registerUser.loadRegisterPage(env)
     registerUser.checkRegisterPage()

@@ -1,6 +1,6 @@
 import User from "../models/user"
-import "cypress-plugin-api"
 import Environment from "../support/environment"
+import "cypress-plugin-api"
 
 export default class LogInAPI {
   apiLogIn(user: User, env: Environment) {

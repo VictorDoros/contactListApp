@@ -1,5 +1,5 @@
-import Environment from "../support/environment"
 import User from "../models/user"
+import Environment from "../support/environment"
 import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
 import logoutSelctors from "../selectors/logout.sel"
@@ -66,7 +66,7 @@ export default class LogInLogOutPage {
 
   checkUserLoggedIn() {
     cy.step("Confirm that user has logged in")
-    cy.get(this.header).invoke('text').should("eq", "Contact List")
+    cy.get(this.header).invoke("text").should("eq", "Contact List")
   }
 
   checkError(state: string, text: string) {
@@ -77,7 +77,7 @@ export default class LogInLogOutPage {
       .and("have.text", text)
   }
 
-  getLogout(){
+  getLogout() {
     cy.step("Logout from the APP")
     cy.get(this.logoutButton).click()
   }
