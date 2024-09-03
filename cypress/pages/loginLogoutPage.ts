@@ -1,3 +1,4 @@
+import Environment from "../support/environment"
 import User from "../models/user"
 import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
@@ -33,6 +34,8 @@ export default class LogInLogOutPage {
   }
 
   loadLoginPage() {
+    cy.step("Reach the page")
+    cy.visit(new Environment().getEnvironment())
     cy.step("Load the page")
     cy.visit("/")
   }

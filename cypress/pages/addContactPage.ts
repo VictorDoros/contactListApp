@@ -1,8 +1,9 @@
+import Environment from "../support/environment"
 import User from "../models/user"
 import addContactAPI from "../api/addContactAPI"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
-import "cypress-map"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
+import "cypress-map"
 
 export default class AddContactPage {
   private get addContactButton() {
@@ -82,6 +83,8 @@ export default class AddContactPage {
   }
 
   loadAddContact() {
+    cy.step("Reach the page")
+    cy.visit(new Environment().getEnvironment())
     cy.step("Go to contacts page")
     cy.get(this.addContactButton).click()
   }
