@@ -4,20 +4,19 @@ import APIRequests from "../../pages/apiRequests"
 import LogInLogOutPage from "../../pages/loginLogoutPage"
 
 describe("Log in using API", { tags: ["@api", "@loginAPI"] }, () => {
-  let loginLogoutPage: LogInLogOutPage
   let env: Environment
   let user: User
-  let apiRequest : APIRequests
+  let apiRequest: APIRequests
+  let loginLogoutPage: LogInLogOutPage
 
   beforeEach(() => {
-    loginLogoutPage = new LogInLogOutPage()
     env = new Environment()
     user = new User()
-    apiRequest = new APIRequests
+    apiRequest = new APIRequests()
+    loginLogoutPage = new LogInLogOutPage()
   })
 
   it("Log in using API", () => {
     apiRequest.logInUsingAPI(user, env)
   })
-
 })

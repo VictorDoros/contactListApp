@@ -11,8 +11,8 @@ describe("Update user", { tags: ["@api", "@updateUserAPI"] }, () => {
 
   beforeEach(() => {
     user = new User()
-    registerUser = new RegisterUser()
     env = new Environment()
+    registerUser = new RegisterUser()
     apiRequest = new APIRequests()
 
     apiRequest.registerUsingAPI(user, env)

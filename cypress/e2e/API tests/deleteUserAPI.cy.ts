@@ -4,7 +4,7 @@ import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Add contact using API", { tags: ["@api", "@manageContactsAPI"] }, () => {
+describe("Delete user using API", { tags: ["@api", "@deleteUserAPI"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser
@@ -13,15 +13,15 @@ describe("Add contact using API", { tags: ["@api", "@manageContactsAPI"] }, () =
 
   beforeEach(() => {
     user = new User()
+    env = new Environment()
     registerUser = new RegisterUser()
     addContactPage = new AddContactPage()
-    env = new Environment()
     apiRequest = new APIRequests()
 
     apiRequest.registerUsingAPI(user, env)
   })
 
-  it("Should be able to add a contact using API", () => {
-    apiRequest.addContactUsingAPI(user, env)
+  it("Should be able to delete the user using API", () => {
+    apiRequest.deleteUserUsingAPI(user, env)
   })
 })

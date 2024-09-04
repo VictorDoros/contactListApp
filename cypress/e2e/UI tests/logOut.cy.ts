@@ -5,8 +5,8 @@ import AddContactPage from "../../pages/addContactPage"
 
 describe("Log out", { tags: ["@ui", "@logOut"] }, () => {
   let user: User
-  let loginLogout: LogInLogOut
   let env: Environment
+  let loginLogout: LogInLogOut
   let addContactPage: AddContactPage
 
   beforeEach(() => {

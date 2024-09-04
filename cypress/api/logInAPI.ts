@@ -3,9 +3,9 @@ import Environment from "../models/environment"
 import "cypress-plugin-api"
 
 export default class LogInAPI {
-
   apiLogIn(user: User, env: Environment) {
-    return cy.step("Login using the API")
+    return cy
+      .step("Login using the API")
       .api({
         method: "POST",
         url: env.getEnvironment() + "/users/login",

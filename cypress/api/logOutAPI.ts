@@ -3,7 +3,6 @@ import Environment from "../models/environment"
 import "cypress-plugin-api"
 
 export default class LogOutAPI {
-  
   apiLogOut(user: User, env: Environment) {
     cy.step("Logout using the API")
       .api({
