@@ -1,5 +1,5 @@
 import User from "../models/user"
-import Environment from "../support/environment"
+import Environment from "../models/environment"
 import addContactAPI from "../api/addContactAPI"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"

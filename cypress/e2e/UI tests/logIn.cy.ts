@@ -1,5 +1,5 @@
 import User from "../../models/user"
-import Environment from "../../support/environment"
+import Environment from "../../models/environment"
 import LogInLogOut from "../../pages/loginLogoutPage"
 import basicData from "../../support/basicData"
 import logInData from "../../fixtures/logInData"

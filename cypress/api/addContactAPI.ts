@@ -1,5 +1,5 @@
 import User from "../models/user"
-import Environment from "../support/environment"
+import Environment from "../models/environment"
 
 export default class AddContactAPI {
   apiAddContact(user: User, env: Environment) {

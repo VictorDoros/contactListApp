@@ -1,5 +1,5 @@
 import User from "../models/user"
-import Environment from "../support/environment"
+import Environment from "../models/environment"
 import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
 import logoutSelctors from "../selectors/logout.sel"

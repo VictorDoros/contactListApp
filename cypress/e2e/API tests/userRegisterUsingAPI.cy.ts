@@ -1,5 +1,5 @@
 import User from "../../models/user"
-import Environment from "../../support/environment"
+import Environment from "../../models/environment"
 import RegisterUser from "../../pages/registerUser"
 
 describe("Register user", { tags: ["@api", "@userRegister"] }, () => {
