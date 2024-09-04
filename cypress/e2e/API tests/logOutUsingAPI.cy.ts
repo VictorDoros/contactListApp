@@ -2,7 +2,7 @@ import User from "../../models/user"
 import Environment from "../../models/environment"
 import LogInLogOutPage from "../../pages/loginLogoutPage"
 
-describe("Log out using API", { tags: ["@api", "@login"] }, () => {
+describe("Log out using API", { tags: ["@api", "@logout"] }, () => {
   let loginLogoutPage: LogInLogOutPage
   let env: Environment
   let user: User
