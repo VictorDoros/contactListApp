@@ -2,7 +2,7 @@ import User from "../../models/user"
 import Environment from "../../models/environment"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Get contact using API", () => {
+describe("Get contact using API", { tags: ["@api", "@getContactList"] }, () => {
   let user: User
   let env: Environment
   let apiRequest: APIRequests
