@@ -3,6 +3,7 @@ import Environment from "../models/environment"
 import loginSelectors from "../selectors/login.sel"
 import loginAPI from "../api/logInAPI"
 import logoutSelctors from "../selectors/logout.sel"
+import LogOutAPI from "../api/logOutAPI"
 
 export default class LogInLogOutPage {
   private get emailInputField() {
@@ -89,6 +90,12 @@ export default class LogInLogOutPage {
   }
 
   logInUsingAPI(user: User, env: Environment) {
-    return new loginAPI().apiLogIn(user, env)
+    return new loginAPI().apiLogIn(user, env).then((response) => {
+      user.setToken(response.body.token)
+    })
+  }
+
+  logOutUsingAPI(user: User, env: Environment) {
+    return new LogOutAPI().apiLogOut(user, env)
   }
 }
