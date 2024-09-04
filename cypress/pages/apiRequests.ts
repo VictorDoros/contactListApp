@@ -5,6 +5,7 @@ import LogInAPI from "../api/logInAPI"
 import LogOutAPI from "../api/logOutAPI"
 import UserAPI from "../api/registerAPI"
 import GetUser from "../api/getUserAPI"
+import GetContactAPI from "../api/getContactAPI"
 import logInData from "../fixtures/logInData"
 
 export default class APIRequests {
@@ -33,6 +34,12 @@ export default class APIRequests {
         expect(response.body.firstName).to.eq(logInData.firstName)
         expect(response.body.lastName).to.eq(logInData.lastName)
         expect(response.body.email).to.eq(user.getStaticEmail())
+    })
+  }
+
+  getContactListUsingAPI(user: User, env: Environment) {
+    return new GetContactAPI().getContactList(user, env).then((response) => {
+        expect(response.body).to.be.an('array').and.not.empty
     })
   }
   

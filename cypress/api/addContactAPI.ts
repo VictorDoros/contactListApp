@@ -3,7 +3,7 @@ import Environment from "../models/environment"
 
 export default class AddContactAPI {
   apiAddContact(user: User, env: Environment) {
-    cy.step("Add a contatc using the API").api({
+    return cy.step("Add a contact using the API").api({
       method: "POST",
       url: env.getEnvironment() + "/contacts",
       body: {
@@ -20,6 +20,8 @@ export default class AddContactAPI {
       headers: {
         Authorization: `Bearer ${user.getToken()}`,
       },
+    }).then((response) => {
+      expect(response.status).to.eq(201)
     })
   }
 }
