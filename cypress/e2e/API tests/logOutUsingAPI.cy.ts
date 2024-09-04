@@ -1,22 +1,25 @@
 import User from "../../models/user"
 import Environment from "../../models/environment"
 import LogInLogOutPage from "../../pages/loginLogoutPage"
+import APIRequests from "../../pages/apiRequests"
 
 describe("Log out using API", { tags: ["@api", "@logout"] }, () => {
   let loginLogoutPage: LogInLogOutPage
   let env: Environment
   let user: User
+  let apiRequest: APIRequests
 
   beforeEach(() => {
     loginLogoutPage = new LogInLogOutPage()
     env = new Environment()
     user = new User()
+    apiRequest = new APIRequests()
 
-    loginLogoutPage.logInUsingAPI(user, env)
+    apiRequest.logInUsingAPI(user, env)
   })
 
 
   it("Log out using API", () => {
-    loginLogoutPage.logOutUsingAPI(user, env)
+    apiRequest.logOutUsingAPI(user, env)
   })
 })

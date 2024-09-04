@@ -2,23 +2,26 @@ import User from "../../models/user"
 import Environment from "../../models/environment"
 import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
+import APIRequests from "../../pages/apiRequests"
 
 describe("Add contact using API", { tags: ["@api", "@manageContacts"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser
   let addContactPage: AddContactPage
+  let apiRequest: APIRequests
 
   beforeEach(() => {
     user = new User()
     registerUser = new RegisterUser()
     addContactPage = new AddContactPage()
     env = new Environment()
+    apiRequest = new APIRequests()
 
-    registerUser.registerUsingAPI(user, env)
+    apiRequest.registerUsingAPI(user, env)
   })
 
   it("Should be able to add a contact using API", () => {
-    addContactPage.addContactUsingAPI(user, env)
+    apiRequest.addContactUsingAPI(user, env)
   })
 })

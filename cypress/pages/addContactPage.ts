@@ -1,6 +1,4 @@
 import User from "../models/user"
-import Environment from "../models/environment"
-import addContactAPI from "../api/addContactAPI"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
 import "cypress-map"
@@ -217,9 +215,5 @@ export default class AddContactPage {
 
   checkError() {
     return cy.step("Check the error").get(this.error)
-  }
-
-  addContactUsingAPI(user: User, env: Environment) {
-    return new addContactAPI().apiAddContact(user, env)
   }
 }

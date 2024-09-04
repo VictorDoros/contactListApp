@@ -1,5 +1,4 @@
 import User from "../models/user"
-import UserAPI from "../api/registerAPI"
 import Environment from "../models/environment"
 import selectors from "../selectors/register.sel"
 
@@ -296,11 +295,5 @@ export default class RegisterUser {
       .get(this.error)
       .should(state)
       .and("have.text", text)
-  }
-
-  registerUsingAPI(user: User, env: Environment) {
-    return new UserAPI().register(user, env).then((response) => {
-      user.setToken(response.body.token)
-    })
   }
 }

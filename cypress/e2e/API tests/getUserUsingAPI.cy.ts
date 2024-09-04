@@ -1,22 +1,21 @@
 import User from "../../models/user"
 import Environment from "../../models/environment"
-import RegisterUser from "../../pages/registerUser"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Register user", { tags: ["@api", "@userRegister"] }, () => {
+describe("Get the user using API", { tags: ["@api", "@getUser"] }, () => {
   let user: User
   let env: Environment
-  let registerUser: RegisterUser
   let apiRequest: APIRequests
 
   beforeEach(() => {
     user = new User()
-    registerUser = new RegisterUser()
     env = new Environment()
     apiRequest = new APIRequests()
+
+    apiRequest.logInUsingAPI(user, env)
   })
 
-  it("Register user by API", () => {
-    apiRequest.registerUsingAPI(user, env)
+  it("Get the user using API", () => {
+    apiRequest.getUserUsingAPI(user, env)
   })
 })
