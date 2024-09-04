@@ -9,4 +9,6 @@ jobs:
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: npx cypress run --env env='dev'
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run --env env='prod'
