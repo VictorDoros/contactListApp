@@ -7,7 +7,7 @@ export default class LogOutAPI {
     cy.step("Logout using the API")
       .api({
         method: "POST",
-        url: env.getEnvironment() + "/users/logout",
+        url: "/users/logout",
         headers: {
           Authorization: `Bearer ${user.getToken()}`,
         },

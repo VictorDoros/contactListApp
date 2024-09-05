@@ -8,7 +8,7 @@ export default class LogInAPI {
       .step("Login using the API")
       .api({
         method: "POST",
-        url: env.getEnvironment() + "/users/login",
+        url: "/users/login",
         body: {
           email: user.getStaticEmail(),
           password: user.getPassword(),

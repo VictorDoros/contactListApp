@@ -7,7 +7,7 @@ export default class GetUser {
       .step("Get the user's profile")
       .api({
         method: "GET",
-        url: env.getEnvironment() + "/users/me",
+        url: "/users/me",
         headers: {
           Authorization: `Bearer ${user.getToken()}`,
         },
