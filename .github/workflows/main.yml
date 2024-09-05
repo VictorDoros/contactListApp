@@ -2,7 +2,7 @@ name: E2E regression
 on:
   push:
     branches:
-      - testing
+      - dev
 jobs:
   Cypress-Test:
     runs-on: ubuntu-22.04
@@ -12,3 +12,5 @@ jobs:
 
       - name: Run Cypress Test
         uses: cypress-io/github-action@v6
+        with:
+          env: dev
