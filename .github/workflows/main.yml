@@ -1,14 +1,14 @@
-name: End-to-end tests
-on: push
+name: E2E regression
+on:
+  push:
+    branches:
+      - testing
 jobs:
-  cypress-run:
+  Cypress-Test:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Checkout GitCode
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Run Cypress Test
         uses: cypress-io/github-action@v6
-        with:
-          command: npx cypress run --env env='prod'
