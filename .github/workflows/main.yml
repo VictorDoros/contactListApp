@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - dev
+    schedule:
+      - cron: "58 9 * * *"
 jobs:
   Cypress-Test:
     runs-on: ubuntu-22.04
