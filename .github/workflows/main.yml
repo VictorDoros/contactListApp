@@ -14,3 +14,9 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run runDev
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html/index.html
