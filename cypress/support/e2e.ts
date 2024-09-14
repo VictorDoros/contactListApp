@@ -17,7 +17,8 @@
 import "./commands"
 import "cypress-plugin-steps"
 import "cypress-mochawesome-reporter/register"
-require("@cypress/grep")
+const registerCypressGrep = require("@cypress/grep")
+registerCypressGrep()
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
