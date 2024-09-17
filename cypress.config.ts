@@ -2,6 +2,10 @@ import { defineConfig } from "cypress"
 import getCompareSnapshotsPlugin from "cypress-image-diff-js/plugin"
 
 export default defineConfig({
+  retries: {
+    runMode: 2,
+    openMode: 0,
+  },
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,
