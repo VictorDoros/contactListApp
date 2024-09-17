@@ -4,7 +4,7 @@ import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Delete user using API", { tags: ["@api", "@deleteUserAPI"] }, () => {
+describe("Delete user - API", { tags: ["@api", "@deleteUserAPI"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser

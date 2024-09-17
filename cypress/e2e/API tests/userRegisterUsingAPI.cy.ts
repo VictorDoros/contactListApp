@@ -3,7 +3,7 @@ import Environment from "../../models/environment"
 import RegisterUser from "../../pages/registerUser"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Register user", { tags: ["@api", "@userRegisterAPI"] }, () => {
+describe("Register user - API", { tags: ["@api", "@userRegisterAPI"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser

@@ -1,4 +1,18 @@
 /// <reference types="cypress" />
+
+/**
+ * Unfocus the field
+ */
+export const unfocusField = () => {
+  cy.get("body").click(0, 0)
+}
+
+/**
+ * Wait until element has the corresponding state
+ */
+export const waitUntilElementHasState = (elementLocator, state) => {
+  cy.get(elementLocator, { timeout: 10000 }).should(state)
+}
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite

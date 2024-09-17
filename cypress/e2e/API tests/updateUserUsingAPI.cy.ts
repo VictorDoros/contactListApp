@@ -3,7 +3,7 @@ import Environment from "../../models/environment"
 import RegisterUser from "../../pages/registerUser"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Update user", { tags: ["@api", "@updateUserAPI"] }, () => {
+describe("Update user - API", { tags: ["@api", "@updateUserAPI"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser

@@ -3,7 +3,7 @@ import Environment from "../../models/environment"
 import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 
-describe("Manage contacts", { tags: ["@ui", "@manageContacts"] }, () => {
+describe("Manage contacts - UI", { tags: ["@ui", "@manageContacts"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser

@@ -4,7 +4,7 @@ import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 import APIRequests from "../../pages/apiRequests"
 
-describe("Add contact using API", { tags: ["@api", "@addContactsAPI"] }, () => {
+describe("Add contact - API", { tags: ["@api", "@addContactsAPI"] }, () => {
   let user: User
   let env: Environment
   let registerUser: RegisterUser
