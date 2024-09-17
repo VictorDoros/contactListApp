@@ -66,7 +66,7 @@ export default class LogInLogOutPage {
 
   logInInvalidCredentials(user: User) {
     cy.step("Fill in the email field with invalid value")
-    cy.get(this.emailInputField).type(user.getEmail())
+    cy.get(this.emailInputField).type(user.getInvalidEmail())
 
     cy.step("Fill in the password field")
     cy.get(this.passwordInputField).type(user.getPassword())
