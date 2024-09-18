@@ -10,7 +10,10 @@ export const unfocusField = () => {
 /**
  * Wait until element has the corresponding state
  */
-export const waitUntilElementHasState = (elementLocator, state) => {
+export const waitUntilElementHasState = (
+  elementLocator: string,
+  state: string
+) => {
   cy.get(elementLocator, { timeout: 10000 }).should(state)
 }
 // ***********************************************
