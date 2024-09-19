@@ -34,9 +34,11 @@ export default class APIRequests {
   }
 
   addStaticContactUsingAPI(user: User, env: Environment) {
-    return new AddContactAPI().apiAddStaticContact(user, env).then((response) => {
-      user.setIDContact(response.body._id)
-    })
+    return new AddContactAPI()
+      .apiAddStaticContact(user, env)
+      .then((response) => {
+        user.setIDContact(response.body._id)
+      })
   }
 
   getUserUsingAPI(user: User, env: Environment) {

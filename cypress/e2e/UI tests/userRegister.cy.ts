@@ -189,7 +189,7 @@ describe(
 
     it("Should display the corresponding error when submitting with existing email", () => {
       registerUser.registerUser_existingEmail(user)
-      
+
       registerUser.getError(
         basicData.stateData.beVisible,
         registerData.errorMessages.existingEmail

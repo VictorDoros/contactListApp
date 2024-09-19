@@ -69,7 +69,7 @@ export default class User {
   getStaticEmail() {
     return this.staticEmail
   }
-  
+
   getStaticSecondEmail() {
     return this.staticSecondEmail
   }
@@ -126,7 +126,7 @@ export default class User {
     this.token = token
   }
 
-  getIDContact(){
+  getIDContact() {
     return this.idContact
   }
 

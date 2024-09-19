@@ -20,6 +20,7 @@ describe("Update user - API", { tags: ["@api", "@updateUserAPI"] }, () => {
 
   it("Update user using API", () => {
     apiRequest.updateUserUsingAPI(user, env)
+
     apiRequest.getUserAfterUpdateUsingAPI(user, env)
   })
 })

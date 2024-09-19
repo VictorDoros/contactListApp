@@ -24,8 +24,8 @@ registerCypressGrep()
 
 // Generate visual testing report
 after(() => {
-    cy.task("generateReport")
-  })
+  cy.task("generateReport")
+})
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
