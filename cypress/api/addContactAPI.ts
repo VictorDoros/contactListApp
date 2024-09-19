@@ -27,4 +27,23 @@ export default class AddContactAPI {
         expect(response.status).to.eq(201)
       })
   }
+
+  apiAddStaticContact(user: User, env: Environment) {
+    return cy
+      .step("Add a contact using the API")
+      .api({
+        method: "POST",
+        url: env.getEnvironment() + "/contacts",
+        body: {
+          firstName: user.getStaticFirstName(),
+          lastName: user.getStaticLastName(),
+        },
+        headers: {
+          Authorization: `Bearer ${user.getToken()}`,
+        },
+      })
+      .then((response) => {
+        expect(response.status).to.eq(201)
+      })
+  }
 }
