@@ -7,13 +7,11 @@ describe("Log out - API", { tags: ["@api", "@logoutAPI"] }, () => {
   let env: Environment
   let user: User
   let apiRequest: APIRequests
-  let loginLogoutPage: LogInLogOutPage
 
   beforeEach(() => {
     env = new Environment()
     user = new User()
     apiRequest = new APIRequests()
-    loginLogoutPage = new LogInLogOutPage()
 
     apiRequest.logInUsingAPI(user, env)
   })

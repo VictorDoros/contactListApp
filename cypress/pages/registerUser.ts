@@ -500,7 +500,7 @@ export default class RegisterUser {
     cy.step("Wait untill the error is displayed")
     waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
-    cy.step("Unfocus the [Submit] button")
+    cy.step("Unfocus the [Submit] button") 
     unfocusField()
 
     cy.step(
