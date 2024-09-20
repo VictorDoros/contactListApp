@@ -16,6 +16,18 @@ export const waitUntilElementHasState = (
 ) => {
   cy.get(elementLocator, { timeout: 10000 }).should(state)
 }
+
+/**
+ * Wait until element has the corresponding state
+ */
+export const pickElement = (elementLocator: string, elementText: string) => {
+  cy.get(elementLocator).each(($el) => {
+    if ($el.text() == elementText) {
+      cy.wrap($el).click()
+      return
+    }
+  })
+}
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite

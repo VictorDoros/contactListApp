@@ -1,5 +1,5 @@
 export default {
-  addContactButton: "#add-contact",
+  addContactButton: "button[id='add-contact']",
   firstNameField: "#firstName",
   lastNameField: "#lastName",
   birthDateField: "#birthdate",
