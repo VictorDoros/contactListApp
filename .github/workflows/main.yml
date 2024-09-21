@@ -2,7 +2,7 @@ name: E2E regression
 on:
   push:
     branches:
-      - dev
+      - master
     schedule:
       - cron: "58 9 * * *"
 jobs:
