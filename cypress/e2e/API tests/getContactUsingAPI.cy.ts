@@ -17,7 +17,7 @@ describe("Get contact - API", { tags: ["@api", "@getContactListAPI"] }, () => {
 
   it("Get the contact list using API", () => {
     apiRequest.addContactUsingAPI(user, env)
-    
+
     apiRequest.getContactListUsingAPI(user, env)
   })
 })
