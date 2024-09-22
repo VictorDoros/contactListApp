@@ -1,5 +1,5 @@
 # Contact List App
-For testing purposes, the application created by Kristin Jackvony was used, which contains creation, edition and deletion of the the contacts from a list.
+For testing purposes, the application created by Kristin Jackvony was used, which contains the creation, edition and deletion of the contacts from a list.
 The API documentation can be found [here](https://documenter.getpostman.com/view/4012288/TzK2bEa8).
 
 The purpose of the project is to show one of the ways on structuring a big project in Cypress. 
@@ -23,7 +23,7 @@ npm install
 
 _Open mode:_
 ```
-npx cypress opem
+npx cypress open
 ```
 _Headless mode:_
 ```
