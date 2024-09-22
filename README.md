@@ -20,14 +20,15 @@ The focus was on the creation of the E2E tests, which includes:
 npm install
 ```
 3. Run Cypress using one of the 2 options:
-   * Open mode
-     ```
-     npx cypress opem
-     ```
-   * Headless mode
-     ```
-     npx cypress run
-     ```   
+
+_Open mode:_
+```
+npx cypress opem
+```
+_Headless mode:_
+```
+npx cypress run
+```   
    
 
 # Dependencies used within the project
