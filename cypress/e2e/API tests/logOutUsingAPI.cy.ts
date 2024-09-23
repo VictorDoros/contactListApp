@@ -1,7 +1,6 @@
 import User from "../../models/user"
 import Environment from "../../models/environment"
 import APIRequests from "../../pages/apiRequests"
-import LogInLogOutPage from "../../pages/loginLogoutPage"
 
 describe("Log out - API", { tags: ["@api", "@logoutAPI"] }, () => {
   let env: Environment
