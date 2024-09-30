@@ -4,7 +4,7 @@ import LogInLogOut from "../../pages/loginLogoutPage"
 import basicData from "../../support/basicData"
 import logInData from "../../fixtures/logInData"
 
-describe("Log in", { tags: ["@ui", "@login"] }, () => {
+describe("Log in - UI", { tags: ["@ui", "@login", "@loginUI"] }, () => {
   let user: User
   let env: Environment
   let logInLogOutPage: LogInLogOut
@@ -20,12 +20,15 @@ describe("Log in", { tags: ["@ui", "@login"] }, () => {
 
   it("Should be able to log in", () => {
     logInLogOutPage.logIn(user)
+
     logInLogOutPage.submitLogIn()
+
     logInLogOutPage.checkUserLoggedIn()
   })
 
   it("Should display the error when submitting with no credentials", () => {
     logInLogOutPage.submitLogIn()
+
     logInLogOutPage.checkError(
       basicData.stateData.beVisible,
       logInData.logInError
@@ -34,7 +37,9 @@ describe("Log in", { tags: ["@ui", "@login"] }, () => {
 
   it("Should display the error when submitting with invalid credentials", () => {
     logInLogOutPage.logInInvalidCredentials(user)
+
     logInLogOutPage.submitLogIn()
+
     logInLogOutPage.checkError(
       basicData.stateData.beVisible,
       logInData.logInError

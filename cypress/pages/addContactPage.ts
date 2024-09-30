@@ -2,6 +2,12 @@ import User from "../models/user"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
 import "cypress-map"
+import {
+  pickElement,
+  unfocusField,
+  waitUntilElementHasState,
+} from "../support/commands"
+import basicData from "../support/basicData"
 
 export default class AddContactPage {
   private get addContactButton() {
@@ -119,6 +125,14 @@ export default class AddContactPage {
     cy.get(this.countryField).type(user.getCountry())
   }
 
+  addContactVisual(user: User) {
+    cy.step("Fill in the first name field")
+    cy.get(this.firstNameField).type(user.getStaticFirstName())
+
+    cy.step("Fill in the last name field")
+    cy.get(this.lastNameField).type(user.getStaticLastName())
+  }
+
   confirmAddContact(user: User) {
     cy.step(
       "Confirm the informatiom from the edited contact OR the contact was not edited after canceling the edit contact"
@@ -165,6 +179,28 @@ export default class AddContactPage {
     cy.get(this.header).invoke("text").should("eq", "Contact Details")
   }
 
+  loadContactDetailsVisual_newContact(user: User) {
+    cy.step("Load the details of the contact of the new added contact")
+    pickElement(
+      this.firstColumnOfRow,
+      `${user.getStaticFirstName()} ${user.getStaticLastName()}`
+    )
+
+    cy.step("Confirm that the details page has been opened")
+    cy.get(this.header).invoke("text").should("eq", "Contact Details")
+  }
+
+  loadContactDetailsVisual_editedContact(user: User) {
+    cy.step("Load the details of the contact of the new added contact")
+    pickElement(
+      this.firstColumnOfRow,
+      `${user.getStaticFirstName()}_new ${user.getStaticLastName()}_new`
+    )
+
+    cy.step("Confirm that the details page has been opened")
+    cy.get(this.header).invoke("text").should("eq", "Contact Details")
+  }
+
   loadEditContact() {
     cy.step("Load the edit mode of the contact")
     cy.get(this.editButton).click()
@@ -179,6 +215,16 @@ export default class AddContactPage {
     )
     cy.get(this.firstNameField).clear().type(user.getStaticFirstName())
     cy.get(this.lastNameField).clear().type(user.getStaticLastName())
+  }
+
+  editContactVisual(user: User) {
+    cy.step("Edit the contact e.g. change the 'First' and 'Last' name")
+    cy.get(this.firstNameField, { timeout: 10000 }).should(
+      "have.value",
+      user.getStaticFirstName()
+    )
+    cy.get(this.firstNameField).clear().type(`${user.getStaticFirstName()}_new`)
+    cy.get(this.lastNameField).clear().type(`${user.getStaticLastName()}_new`)
   }
 
   getSubmit() {
@@ -215,5 +261,79 @@ export default class AddContactPage {
 
   checkError() {
     return cy.step("Check the error").get(this.error)
+  }
+
+  takeScreenshot_beforeFillInFields() {
+    cy.step("Wait until the page is loaded")
+    waitUntilElementHasState(
+      addContactSelectors.postalCodeField,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot before filling in the fields")
+    cy.compareSnapshot("Before filling in the fields")
+  }
+
+  takeScreenshot_afterFillInFields() {
+    cy.step("Unfocus the last filled in field")
+    unfocusField()
+
+    cy.step("Take the screenshot after filling in the fields")
+    cy.compareSnapshot("After filling in the fields")
+  }
+
+  takeScreenshot_newAddedContact() {
+    cy.step("Wait until the page is loaded with the new contact")
+    waitUntilElementHasState(
+      addContactSelectors.firstColumnsOfRow,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot with the new added contact")
+    cy.compareSnapshot("New contact added")
+  }
+
+  takeScreenshot_contactDetails() {
+    cy.step("Wait until the page is loaded with the contact details")
+    waitUntilElementHasState(
+      addContactSelectors.editButton,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot with the contact details")
+    cy.compareSnapshot("Contact details")
+  }
+
+  takeScreenshot_editContact() {
+    cy.step("Wait until the page is loaded for editing the contact")
+    waitUntilElementHasState(
+      addContactSelectors.postalCodeField,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot for editing the contact")
+    cy.compareSnapshot("Edit contact")
+  }
+
+  takeScreenshot_editedContact() {
+    cy.step("Wait until the page is loaded with the edited contact")
+    waitUntilElementHasState(
+      addContactSelectors.firstColumnsOfRow,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot with the edited contact")
+    cy.compareSnapshot("Edited contact")
+  }
+
+  takeScreenshot_deletedContact() {
+    cy.step("Wait until the page is loaded with the deleted contact")
+    waitUntilElementHasState(
+      addContactSelectors.firstColumnsOfRow,
+      basicData.stateData.beVisible
+    )
+
+    cy.step("Take the screenshot with the deleted contact")
+    cy.compareSnapshot("Deleted contact")
   }
 }
