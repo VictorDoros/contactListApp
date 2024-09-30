@@ -2,11 +2,6 @@ import User from "../models/user"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
 import "cypress-map"
-import {
-  pickElement,
-  unfocusField,
-  waitUntilElementHasState,
-} from "../support/commands"
 import basicData from "../support/basicData"
 
 export default class AddContactPage {
@@ -181,7 +176,7 @@ export default class AddContactPage {
 
   loadContactDetailsVisual_newContact(user: User) {
     cy.step("Load the details of the contact of the new added contact")
-    pickElement(
+    cy.pickElement(
       this.firstColumnOfRow,
       `${user.getStaticFirstName()} ${user.getStaticLastName()}`
     )
@@ -192,7 +187,7 @@ export default class AddContactPage {
 
   loadContactDetailsVisual_editedContact(user: User) {
     cy.step("Load the details of the contact of the new added contact")
-    pickElement(
+    cy.pickElement(
       this.firstColumnOfRow,
       `${user.getStaticFirstName()}_new ${user.getStaticLastName()}_new`
     )
@@ -265,7 +260,7 @@ export default class AddContactPage {
 
   takeScreenshot_beforeFillInFields() {
     cy.step("Wait until the page is loaded")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.postalCodeField,
       basicData.stateData.beVisible
     )
@@ -276,7 +271,7 @@ export default class AddContactPage {
 
   takeScreenshot_afterFillInFields() {
     cy.step("Unfocus the last filled in field")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step("Take the screenshot after filling in the fields")
     cy.compareSnapshot("After filling in the fields")
@@ -284,7 +279,7 @@ export default class AddContactPage {
 
   takeScreenshot_newAddedContact() {
     cy.step("Wait until the page is loaded with the new contact")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.firstColumnsOfRow,
       basicData.stateData.beVisible
     )
@@ -295,7 +290,7 @@ export default class AddContactPage {
 
   takeScreenshot_contactDetails() {
     cy.step("Wait until the page is loaded with the contact details")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.editButton,
       basicData.stateData.beVisible
     )
@@ -306,7 +301,7 @@ export default class AddContactPage {
 
   takeScreenshot_editContact() {
     cy.step("Wait until the page is loaded for editing the contact")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.postalCodeField,
       basicData.stateData.beVisible
     )
@@ -317,7 +312,7 @@ export default class AddContactPage {
 
   takeScreenshot_editedContact() {
     cy.step("Wait until the page is loaded with the edited contact")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.firstColumnsOfRow,
       basicData.stateData.beVisible
     )
@@ -328,7 +323,7 @@ export default class AddContactPage {
 
   takeScreenshot_deletedContact() {
     cy.step("Wait until the page is loaded with the deleted contact")
-    waitUntilElementHasState(
+    cy.waitUntilElementHasState(
       addContactSelectors.firstColumnsOfRow,
       basicData.stateData.beVisible
     )
