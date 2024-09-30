@@ -7,7 +7,7 @@ export default class DeleteUserAPI {
       .step("Delete the user using the API")
       .api({
         method: "DELETE",
-        url: env.getEnvironment() + "/users/me",
+        url: "/users/me",
         headers: {
           Authorization: `Bearer ${user.getToken()}`,
         },

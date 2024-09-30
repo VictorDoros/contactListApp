@@ -1,7 +1,6 @@
 import User from "../models/user"
 import Environment from "../models/environment"
 import selectors from "../selectors/register.sel"
-import { unfocusField, waitUntilElementHasState } from "../support/commands"
 import basicData from "../support/basicData"
 
 export default class RegisterUser {
@@ -43,7 +42,7 @@ export default class RegisterUser {
 
   loadRegisterPage(env: Environment) {
     cy.step("Reach the page")
-    cy.visit(env.getEnvironment())
+    cy.visit("/")
 
     cy.step("Click on [Sign in] button")
     cy.get(this.signUpButton).click()
@@ -498,10 +497,10 @@ export default class RegisterUser {
 
   takeScreenshot_noData() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with no data"
@@ -511,10 +510,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstName() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name only"
@@ -524,10 +523,10 @@ export default class RegisterUser {
 
   takeScreenshot_lastName() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with last name only"
@@ -537,10 +536,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstLastName() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first and last name only"
@@ -550,10 +549,10 @@ export default class RegisterUser {
 
   takeScreenshot_email() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with email only"
@@ -563,10 +562,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstNameEmail_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name and email only"
@@ -576,10 +575,10 @@ export default class RegisterUser {
 
   takeScreenshot_lastNameEmail_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with last name and email only"
@@ -589,10 +588,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstLastNameEmail_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name, last name and email only"
@@ -602,10 +601,10 @@ export default class RegisterUser {
 
   takeScreenshot_password_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with password only"
@@ -615,10 +614,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstNamePassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name and password only"
@@ -628,10 +627,10 @@ export default class RegisterUser {
 
   takeScreenshot_lastNamePassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with last name and password only"
@@ -641,10 +640,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstLastNamePassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name, last name and password only"
@@ -654,10 +653,10 @@ export default class RegisterUser {
 
   takeScreenshot_emailPassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with email and password only"
@@ -667,10 +666,10 @@ export default class RegisterUser {
 
   takeScreenshot_firstNameEmailPassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with first name, email and password only"
@@ -680,10 +679,10 @@ export default class RegisterUser {
 
   takeScreenshot_lastNameEmailPassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with last name, email and password only"
@@ -693,10 +692,10 @@ export default class RegisterUser {
 
   takeScreenshot_invalidPassword_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with invalid password"
@@ -706,10 +705,10 @@ export default class RegisterUser {
 
   takeScreenshot_invalidEmail_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with invalid email"
@@ -719,10 +718,10 @@ export default class RegisterUser {
 
   takeScreenshot_existingEmail_visual() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(selectors.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step(
       "Take the screenshot with the error after submitting the registration form with existing email"

@@ -8,9 +8,9 @@ import GetUser from "../api/getUserAPI"
 import GetContactAPI from "../api/getContactAPI"
 import logInData from "../fixtures/logInData"
 import UpdateUserAPI from "../api/updateUserAPI"
-import "cypress-map"
 import DeleteUserAPI from "../api/deleteUserAPI"
 import DeleteContactAPI from "../api/deleteContactAPI"
+import "cypress-map"
 
 export default class APIRequests {
   registerUsingAPI(user: User, env: Environment) {

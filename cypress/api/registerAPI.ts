@@ -8,7 +8,7 @@ export default class UserAPI {
       .step("Register using the API")
       .api({
         method: "POST",
-        url: env.getEnvironment() + "/users",
+        url: "/users",
         body: {
           firstName: user.getFirstName(),
           lastName: user.getLastName(),

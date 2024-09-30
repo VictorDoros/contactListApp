@@ -3,7 +3,6 @@ import Environment from "../models/environment"
 import loginSelectors from "../selectors/login.sel"
 import logoutSelctors from "../selectors/logout.sel"
 import basicData from "../support/basicData"
-import { waitUntilElementHasState, unfocusField } from "../support/commands"
 
 export default class LogInLogOutPage {
   private get emailInputField() {
@@ -40,7 +39,7 @@ export default class LogInLogOutPage {
 
   loadLoginPage(env: Environment) {
     cy.step("Load the page")
-    cy.visit(env.getEnvironment())
+    cy.visit("/")
   }
 
   checkLoginPage() {
@@ -108,7 +107,7 @@ export default class LogInLogOutPage {
 
   takeScreenshotAfterFillDataLogin() {
     cy.step("Unfocus the last inserted field")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step("Take the screenshot before logging")
     cy.compareSnapshot("After filling in the credentials")
@@ -116,7 +115,7 @@ export default class LogInLogOutPage {
 
   takeScreenshotLogin() {
     cy.step("Wait untill the page is loaded")
-    waitUntilElementHasState(this.tableHead, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(this.tableHead, basicData.stateData.beVisible)
 
     cy.step("Take the screenshot after filling in the fields")
     cy.compareSnapshot("User logged in")
@@ -124,10 +123,10 @@ export default class LogInLogOutPage {
 
   takeScreenshotErrorNoCredentials() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(this.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step("Take the screenshot after submitting with no credentials")
     cy.compareSnapshot("Error no credentials")
@@ -135,10 +134,10 @@ export default class LogInLogOutPage {
 
   takeScreenshotErrorInvalidCredentials() {
     cy.step("Wait untill the error is displayed")
-    waitUntilElementHasState(this.error, basicData.stateData.beVisible)
+    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
 
     cy.step("Unfocus the [Submit] button")
-    unfocusField()
+    cy.unfocusField()
 
     cy.step("Take the screenshot after submitting with invalid credentials")
     cy.compareSnapshot("Error invalid credentials")

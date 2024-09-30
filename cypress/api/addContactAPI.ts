@@ -7,7 +7,7 @@ export default class AddContactAPI {
       .step("Add a contact using the API")
       .api({
         method: "POST",
-        url: env.getEnvironment() + "/contacts",
+        url: "/contacts",
         body: {
           firstName: user.getFirstName(),
           lastName: user.getLastName(),
