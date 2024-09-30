@@ -4,4 +4,5 @@ export default {
   submitButton: "#submit",
   header: "h1",
   error: "#error",
+  tableHead: ".contactTableHead",
 }

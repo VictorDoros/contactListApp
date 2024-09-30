@@ -10,6 +10,7 @@ import logInData from "../fixtures/logInData"
 import UpdateUserAPI from "../api/updateUserAPI"
 import "cypress-map"
 import DeleteUserAPI from "../api/deleteUserAPI"
+import DeleteContactAPI from "../api/deleteContactAPI"
 
 export default class APIRequests {
   registerUsingAPI(user: User, env: Environment) {
@@ -30,6 +31,14 @@ export default class APIRequests {
 
   addContactUsingAPI(user: User, env: Environment) {
     return new AddContactAPI().apiAddContact(user, env)
+  }
+
+  addStaticContactUsingAPI(user: User, env: Environment) {
+    return new AddContactAPI()
+      .apiAddStaticContact(user, env)
+      .then((response) => {
+        user.setIDContact(response.body._id)
+      })
   }
 
   getUserUsingAPI(user: User, env: Environment) {
@@ -59,5 +68,9 @@ export default class APIRequests {
 
   deleteUserUsingAPI(user: User, env: Environment) {
     new DeleteUserAPI().deleteUser(user, env)
+  }
+
+  deleteContactUsingAPI(user: User, env: Environment) {
+    new DeleteContactAPI().apiDeleteContact(user, env)
   }
 }

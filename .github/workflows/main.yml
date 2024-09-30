@@ -2,7 +2,9 @@ name: E2E regression
 on:
   push:
     branches:
-      - testing
+      - dev
+    schedule:
+      - cron: "58 9 * * *"
 jobs:
   Cypress-Test:
     runs-on: ubuntu-22.04
@@ -12,3 +14,17 @@ jobs:
 
       - name: Run Cypress Test
         uses: cypress-io/github-action@v6
+        with:
+          command: npm run runDev
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Cypress artifacts
+          path: |
+            cypress/reports/html/index.html
+            cypress/screenshots
+            cypress-image-diff-html-report/cypress-image-diff-html-report.html
+            cypress-image-diff-screenshots
+          retention-days: 30

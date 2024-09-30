@@ -8,6 +8,7 @@ export default class User {
   private email: string
   private invalidEmail: string
   private staticEmail: string
+  private staticSecondEmail: string
   private password: string
   private invalidPassword: string
   private dateOfBirth: string
@@ -19,6 +20,8 @@ export default class User {
   private country: string
   private token: string
 
+  private idContact: string
+
   constructor() {
     this.firstName = faker.person.firstName()
     this.staticFirstname = "Roberto"
@@ -27,6 +30,7 @@ export default class User {
     this.email = faker.internet.email()
     this.invalidEmail = "email.com"
     this.staticEmail = "miha123@email.com"
+    this.staticSecondEmail = "miha321@email.com"
     this.password = "Test1234"
     this.invalidPassword = "123"
     this.dateOfBirth = faker.date
@@ -64,6 +68,10 @@ export default class User {
 
   getStaticEmail() {
     return this.staticEmail
+  }
+
+  getStaticSecondEmail() {
+    return this.staticSecondEmail
   }
 
   getInvalidEmail() {
@@ -116,5 +124,13 @@ export default class User {
 
   setToken(token: string) {
     this.token = token
+  }
+
+  getIDContact() {
+    return this.idContact
+  }
+
+  setIDContact(idContact: string) {
+    this.idContact = idContact
   }
 }

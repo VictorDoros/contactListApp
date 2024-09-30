@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "runDev": "cypress run --env env='dev'",
+    "runStaging": "cypress run --env env='staging'",
+    "runProd": "cypress run --env env='prod'"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
     "@cypress/grep": "^4.1.0",
     "@faker-js/faker": "^8.4.1",
     "cypress": "^13.14.1",
+    "cypress-image-diff-js": "^2.2.1",
     "cypress-map": "^1.40.0",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-plugin-api": "^2.11.2",
