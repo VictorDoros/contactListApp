@@ -7,7 +7,7 @@ export default class AddContactAPI {
       .step("Add a contact using the API")
       .api({
         method: "POST",
-        url: "/contacts",
+        url: `${env.getEnvironment()}/contacts`,
         body: {
           firstName: user.getFirstName(),
           lastName: user.getLastName(),
@@ -33,7 +33,7 @@ export default class AddContactAPI {
       .step("Add a contact using the API")
       .api({
         method: "POST",
-        url: env.getEnvironment() + "/contacts",
+        url: `${env.getEnvironment()}/contacts`,
         body: {
           firstName: user.getStaticFirstName(),
           lastName: user.getStaticLastName(),

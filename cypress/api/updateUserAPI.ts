@@ -7,7 +7,7 @@ export default class UpdateUserAPI {
       .step("Update the user using API")
       .api({
         method: "PATCH",
-        url: "/users/me",
+        url: `${env.getEnvironment()}/users/me`,
         body: {
           firstName: `${user.getFirstName()}_updated`,
           lastName: `${user.getLastName()}_updated`,

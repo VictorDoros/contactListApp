@@ -42,7 +42,7 @@ export default class RegisterUser {
 
   loadRegisterPage(env: Environment) {
     cy.step("Reach the page")
-    cy.visit("/")
+    cy.visit(env.getEnvironment())
 
     cy.step("Click on [Sign in] button")
     cy.get(this.signUpButton).click()

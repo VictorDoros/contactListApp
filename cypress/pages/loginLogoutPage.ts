@@ -39,7 +39,7 @@ export default class LogInLogOutPage {
 
   loadLoginPage(env: Environment) {
     cy.step("Load the page")
-    cy.visit("/")
+    cy.visit(env.getEnvironment())
   }
 
   checkLoginPage() {
