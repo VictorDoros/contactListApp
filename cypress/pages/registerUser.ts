@@ -2,6 +2,7 @@ import User from "../models/user"
 import Environment from "../models/environment"
 import selectors from "../selectors/register.sel"
 import basicData from "../support/basicData"
+import registerData from "../fixtures/registerData"
 
 export default class RegisterUser {
   private get cancelButton() {
@@ -41,56 +42,34 @@ export default class RegisterUser {
   }
 
   loadRegisterPage(env: Environment) {
-    cy.step("Reach the page")
-    cy.visit(env.getEnvironment())
-
-    cy.step("Click on [Sign in] button")
-    cy.get(this.signUpButton).click()
+    cy.loadEndPoint(env.getEnvironment(), this.signUpButton)
   }
 
   checkRegisterPage() {
-    cy.step("Confirm that user has been redirected to the registration page")
-    cy.get(this.header).invoke("text").should("eq", "Add User")
+    cy.checkPage(this.header, "Add User")
   }
 
   registerUser(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
+  }
 
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
+  submitRegistration() {
+    cy.clickElement(this.submitButton)
+  }
 
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
-
-    cy.step(
-      "Confirm that the user has successfully registered and the user's page is displayed"
-    )
-    cy.get(this.header).invoke("text").should("eq", "Contact List")
+  checkContactListPage() {
+    cy.checkPage(this.header, "Contact List")
   }
 
   cancelRegister() {
-    cy.step("Cancel the registration")
-    cy.get(this.cancelButton).click()
-  }
-
-  registerUser_noData() {
-    cy.step("Click on [Submit] button with no data filled in")
-    cy.get(this.submitButton).click()
+    cy.clickElement(this.cancelButton)
   }
 
   registerUser_firstName(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
   }
 
   registerUser_firstName_visual(user: User) {
@@ -102,11 +81,7 @@ export default class RegisterUser {
   }
 
   registerUser_lastName(user: User) {
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.lastNameInput, user.getLastName())
   }
 
   registerUser_lastName_Visual(user: User) {
@@ -118,14 +93,8 @@ export default class RegisterUser {
   }
 
   registerUser_firstLastName(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
   }
 
   registerUser_firstLastName_visual(user: User) {
@@ -140,11 +109,7 @@ export default class RegisterUser {
   }
 
   registerUser_email(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.emailInput, user.getEmail())
   }
 
   registerUser_email_visual(user: User) {
@@ -156,14 +121,8 @@ export default class RegisterUser {
   }
 
   registerUser_firstNameEmail(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.emailInput, user.getEmail())
   }
 
   registerUser_firstNameEmail_visual(user: User) {
@@ -178,14 +137,8 @@ export default class RegisterUser {
   }
 
   registerUser_lastNameEmail(user: User) {
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getEmail())
   }
 
   registerUser_lastNameEmail_visual(user: User) {
@@ -200,17 +153,9 @@ export default class RegisterUser {
   }
 
   registerUser_firstLastNameEmail(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getEmail())
   }
 
   registerUser_firstLastNameEmail_visual(user: User) {
@@ -228,22 +173,12 @@ export default class RegisterUser {
   }
 
   registerUser_password(user: User) {
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_firstNamePassword(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_firstNamePassword_visual(user: User) {
@@ -258,14 +193,8 @@ export default class RegisterUser {
   }
 
   registerUser_lastNamePassword(user: User) {
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_lastNamePassword_visual(user: User) {
@@ -280,17 +209,9 @@ export default class RegisterUser {
   }
 
   registerUser_firstLastNamePassword(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_firstLastNamePassword_visual(user: User) {
@@ -308,14 +229,8 @@ export default class RegisterUser {
   }
 
   registerUser_emailPassword(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.emailInput, user.getEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_emailPassword_visual(user: User) {
@@ -330,17 +245,9 @@ export default class RegisterUser {
   }
 
   registerUser_firstNameEmailPassword(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.emailInput, user.getEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_firstNameEmailPassword_visual(user: User) {
@@ -358,17 +265,9 @@ export default class RegisterUser {
   }
 
   registerUser_lastNameEmailPassword(user: User) {
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_lastNameEmailPassword_visual(user: User) {
@@ -386,20 +285,10 @@ export default class RegisterUser {
   }
 
   registerUser_invalidPassword(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getInvalidPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getEmail())
+    cy.typeText(this.passwordInput, user.getInvalidPassword())
   }
 
   registerUser_invalidPassword_visual(user: User) {
@@ -420,20 +309,10 @@ export default class RegisterUser {
   }
 
   registerUser_invalidEmail(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getInvalidEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getInvalidEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_invalidEmail_visual(user: User) {
@@ -454,20 +333,10 @@ export default class RegisterUser {
   }
 
   registerUser_existingEmail(user: User) {
-    cy.step("Fill in the first name field")
-    cy.get(this.firstNameInput).type(user.getFirstName())
-
-    cy.step("Fill in the last name field")
-    cy.get(this.lastNameInput).type(user.getLastName())
-
-    cy.step("Fill in the email field")
-    cy.get(this.emailInput).type(user.getStaticEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInput).type(user.getPassword())
-
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.typeText(this.firstNameInput, user.getFirstName())
+    cy.typeText(this.lastNameInput, user.getLastName())
+    cy.typeText(this.emailInput, user.getStaticEmail())
+    cy.typeText(this.passwordInput, user.getPassword())
   }
 
   registerUser_existingEmail_visual(user: User) {
@@ -487,12 +356,8 @@ export default class RegisterUser {
     cy.get(this.submitButton).click()
   }
 
-  getError(state: string, text: string) {
-    return cy
-      .step("Check the corresponding error message")
-      .get(this.error)
-      .should(state)
-      .and("have.text", text)
+  getError(state: string, errorText: string) {
+    cy.checkTextVisibility(this.error, state, errorText)
   }
 
   takeScreenshot_noData() {

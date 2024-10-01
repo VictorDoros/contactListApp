@@ -43,8 +43,7 @@ export default class LogInLogOutPage {
   }
 
   checkLoginPage() {
-    cy.step("Confirm that the page has been loaded")
-    cy.get(this.header).invoke("text").should("eq", "Contact List App")
+    cy.checkPage(this.header, "Contact List App")
   }
 
   logIn(user: User) {

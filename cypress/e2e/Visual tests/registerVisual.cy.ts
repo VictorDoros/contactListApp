@@ -18,11 +18,12 @@ describe(
       registerUser = new RegisterUser()
       apiRequest = new APIRequests()
 
+      cy.step("Reach the page and click on [Sign in] button")
       registerUser.loadRegisterPage(env)
     })
 
     it("Should display the corresponding error when submitting the registration form with no data", () => {
-      registerUser.registerUser_noData()
+      registerUser.submitRegistration()
 
       registerUser.takeScreenshot_noData()
     })

@@ -10,6 +10,21 @@ declare global {
         state: string
       ): Chainable<void>
       pickElement(elementLocator: string, elementText: string): Chainable<void>
+      loadEndPoint(url: string, buttonElementLocator: string): Chainable<void>
+      clickElement(elementLocator: string): Chainable<void>
+      checkPage(
+        headerElementLocator: string,
+        headerText: string
+      ): Chainable<void>
+      typeText(
+        elementLocator: string,
+        textToBeInserted: string
+      ): Chainable<void>
+      checkTextVisibility(
+        elementLocator: string,
+        state: string,
+        elementText: string
+      ): Chainable<void>
     }
   }
 }
@@ -41,6 +56,30 @@ Cypress.Commands.add("pickElement", (elementLocator, elementText) => {
     }
   })
 })
+
+Cypress.Commands.add("clickElement", (elementLocator) => {
+  cy.get(elementLocator).click()
+})
+
+Cypress.Commands.add("loadEndPoint", (url, buttonElementLocator) => {
+  cy.visit(url)
+  cy.clickElement(buttonElementLocator)
+})
+
+Cypress.Commands.add("checkPage", (headerElementLocator, headerText) => {
+  cy.get(headerElementLocator).invoke("text").should("eq", headerText)
+})
+
+Cypress.Commands.add("typeText", (elementLocator, textToBeInserted) => {
+  cy.get(elementLocator).type(textToBeInserted)
+})
+
+Cypress.Commands.add(
+  "checkTextVisibility",
+  (elementLocator, state, elementText) => {
+    cy.get(elementLocator).should(state).and("have.text", elementText)
+  }
+)
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
