@@ -1,33 +1,46 @@
 /// <reference types="cypress" />
 
+export {}
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      unfocusField(): Chainable<void>
+      waitUntilElementHasState(
+        elementLocator: string,
+        state: string
+      ): Chainable<void>
+      pickElement(elementLocator: string, elementText: string): Chainable<void>
+    }
+  }
+}
+
 /**
  * Unfocus the field
  */
-export const unfocusField = () => {
+Cypress.Commands.add("unfocusField", () => {
   cy.get("body").click(0, 0)
-}
+})
 
 /**
  * Wait until element has the corresponding state
  */
-export const waitUntilElementHasState = (
-  elementLocator: string,
-  state: string
-) => {
+
+Cypress.Commands.add("waitUntilElementHasState", (elementLocator, state) => {
   cy.get(elementLocator, { timeout: 10000 }).should(state)
-}
+})
 
 /**
- * Wait until element has the corresponding state
+ * Pick an element from multiple elements
  */
-export const pickElement = (elementLocator: string, elementText: string) => {
+
+Cypress.Commands.add("pickElement", (elementLocator, elementText) => {
   cy.get(elementLocator).each(($el) => {
     if ($el.text() == elementText) {
       cy.wrap($el).click()
       return
     }
   })
-}
+})
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -54,13 +67,3 @@ export const pickElement = (elementLocator: string, elementText: string) => {
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
