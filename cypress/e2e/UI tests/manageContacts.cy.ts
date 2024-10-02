@@ -24,6 +24,8 @@ describe(
 
       registerUser.registerUser(user)
 
+      registerUser.submitRegistration()
+
       addContactPage.loadAddContact()
 
       addContactPage.confirmAddContactPage()
