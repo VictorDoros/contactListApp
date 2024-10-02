@@ -25,6 +25,11 @@ declare global {
         state: string,
         elementText: string
       ): Chainable<void>
+      takeScreenshot(
+        elementLocator: string,
+        elementState: string,
+        fileName: string
+      ): Chainable<void>
     }
   }
 }
@@ -78,6 +83,15 @@ Cypress.Commands.add(
   "checkTextVisibility",
   (elementLocator, state, elementText) => {
     cy.get(elementLocator).should(state).and("have.text", elementText)
+  }
+)
+
+Cypress.Commands.add(
+  "takeScreenshot",
+  (elementLocator, elementState, fileName) => {
+    cy.waitUntilElementHasState(elementLocator, elementState)
+    cy.unfocusField()
+    cy.compareSnapshot(fileName)
   }
 )
 // ***********************************************
