@@ -34,11 +34,13 @@ declare global {
         state: string,
         elementText: string
       ): Chainable<void>
-      takeScreenshot(
+      takeScreenshot(filename: string): Chainable<void>
+      waitForLoadComponentsAndTakeScreenshot(
         elementLocator: string,
         elementState: string,
         fileName: string
       ): Chainable<void>
+
       getRow(elementLocator: string, fn: any): Chainable<Element>
       getEmtpyTable(
         tableElementLocator: string,
@@ -128,8 +130,13 @@ Cypress.Commands.add(
   }
 )
 
+Cypress.Commands.add("takeScreenshot", (fileName) => {
+  cy.unfocusField()
+  cy.compareSnapshot(fileName)
+})
+
 Cypress.Commands.add(
-  "takeScreenshot",
+  "waitForLoadComponentsAndTakeScreenshot",
   (elementLocator, elementState, fileName) => {
     cy.waitUntilElementHasState(elementLocator, elementState)
     cy.unfocusField()

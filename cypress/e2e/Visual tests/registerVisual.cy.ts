@@ -28,7 +28,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with no data"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with no data"
@@ -45,7 +45,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name only"
@@ -62,7 +62,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with last name only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with last name only"
@@ -79,7 +79,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first and last name only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first and last name only"
@@ -96,7 +96,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with email only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with email only"
@@ -113,7 +113,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name and email only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name and email only"
@@ -130,7 +130,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with last name and email only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with last name and email only"
@@ -147,7 +147,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name, last name and email only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name, last name and email only"
@@ -164,7 +164,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with password only"
@@ -181,7 +181,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name and password only"
@@ -198,7 +198,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with last name and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with last name and password only"
@@ -215,7 +215,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name, last name and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name, last name and password only"
@@ -232,7 +232,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with email and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with email and password only"
@@ -249,7 +249,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with first name, email and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with first name, email and password only"
@@ -266,7 +266,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with last name, email and password only"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with last name, email and password only"
@@ -283,7 +283,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with invalid password"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with invalid password"
@@ -300,7 +300,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form with invalid email"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register with invalid email"
@@ -317,7 +317,7 @@ describe(
       cy.step(
         "Wait until the error is displayed and take the screenshot with the error after submitting the registration form  with existing email"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
         "Register  with existing email"

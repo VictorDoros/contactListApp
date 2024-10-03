@@ -2,7 +2,6 @@ import User from "../models/user"
 import Environment from "../models/environment"
 import loginSelectors from "../selectors/login.sel"
 import logoutSelctors from "../selectors/logout.sel"
-import basicData from "../support/basicData"
 
 export default class LogInLogOutPage {
   private get emailInputField() {
@@ -80,48 +79,5 @@ export default class LogInLogOutPage {
     cy.step("Load the details of the contact")
     cy.get(this.firstColumnFirstRow).click()
     cy.get(this.header).invoke("text").should("eq", "Contact Details")
-  }
-
-  takeScreenshotBeforeLogin() {
-    cy.step("Take the screenshot before logging")
-    cy.compareSnapshot("Before filling in the credentials")
-  }
-
-  takeScreenshotAfterFillDataLogin() {
-    cy.step("Unfocus the last inserted field")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot before logging")
-    cy.compareSnapshot("After filling in the credentials")
-  }
-
-  takeScreenshotLogin() {
-    cy.step("Wait untill the page is loaded")
-    cy.waitUntilElementHasState(this.tableHead, basicData.stateData.beVisible)
-
-    cy.step("Take the screenshot after filling in the fields")
-    cy.compareSnapshot("User logged in")
-  }
-
-  takeScreenshotErrorNoCredentials() {
-    cy.step("Wait untill the error is displayed")
-    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
-
-    cy.step("Unfocus the [Submit] button")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot after submitting with no credentials")
-    cy.compareSnapshot("Error no credentials")
-  }
-
-  takeScreenshotErrorInvalidCredentials() {
-    cy.step("Wait untill the error is displayed")
-    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
-
-    cy.step("Unfocus the [Submit] button")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot after submitting with invalid credentials")
-    cy.compareSnapshot("Error invalid credentials")
   }
 }
