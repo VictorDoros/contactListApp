@@ -73,8 +73,7 @@ export default class LogInLogOutPage {
   }
 
   getLogout() {
-    cy.step("Logout from the APP")
-    cy.get(this.logoutButton).click()
+    cy.clickElement(this.logoutButton)
   }
 
   loadContactDetails() {

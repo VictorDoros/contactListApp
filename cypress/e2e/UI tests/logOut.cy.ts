@@ -1,57 +1,94 @@
 import User from "../../models/user"
 import Environment from "../../models/environment"
-import LogInLogOut from "../../pages/loginLogoutPage"
+import LogInLogOutPage from "../../pages/loginLogoutPage"
 import AddContactPage from "../../pages/addContactPage"
 
 describe("Log out - UI", { tags: ["@ui", "@logOut"] }, () => {
   let user: User
   let env: Environment
-  let loginLogout: LogInLogOut
+  let loginLogoutPage: LogInLogOutPage
   let addContactPage: AddContactPage
 
   beforeEach(() => {
     user = new User()
     env = new Environment()
-    loginLogout = new LogInLogOut()
+    loginLogoutPage = new LogInLogOutPage()
     addContactPage = new AddContactPage()
 
-    loginLogout.loadLoginPage(env)
-    loginLogout.logIn(user)
-    loginLogout.submitLogIn()
-    loginLogout.checkUserLoggedIn()
+    cy.step("Load the 'Login' page")
+    loginLogoutPage.loadLoginPage(env)
+
+    cy.step("Insert the credentials in order ot log in to profile")
+    loginLogoutPage.logIn(user)
+
+    cy.step("Click on [Submit] button")
+    loginLogoutPage.submitLogIn()
+
+    cy.step("Confirm that user has logged in")
+    loginLogoutPage.checkUserLoggedIn()
   })
 
   it("Should be able to log out after log in", () => {
-    loginLogout.getLogout()
+    cy.step("Logout from the APP")
+    loginLogoutPage.getLogout()
 
-    loginLogout.checkLoginPage()
+    cy.step(
+      "Confirm that the user has logged out and the 'Log in' page has been loaded"
+    )
+    loginLogoutPage.checkLoginPage()
   })
 
   it("Should be able to log out from 'Add Contact' page", () => {
+    cy.step("Load the 'Add Contact' page")
     addContactPage.loadAddContact()
 
+    cy.step("Confirm that user has been redirected to the 'Add Contact' page")
     addContactPage.checkAddContactPage()
 
-    loginLogout.getLogout()
+    cy.step("Logout from the APP")
+    loginLogoutPage.getLogout()
 
-    loginLogout.checkLoginPage()
+    cy.step(
+      "Confirm that the user has logged out and the 'Log in' page has been loaded"
+    )
+    loginLogoutPage.checkLoginPage()
   })
 
   it("Should be able to log out from 'Contact Details' page", () => {
-    loginLogout.loadContactDetails()
+    cy.step("Load the details of the contact")
+    loginLogoutPage.loadContactDetails()
 
-    loginLogout.getLogout()
+    cy.step("Confirm that the contact details has been loaded")
+    addContactPage.checkContactDetailsPage()
 
-    loginLogout.checkLoginPage()
+    cy.step("Logout from the APP")
+    loginLogoutPage.getLogout()
+
+    cy.step(
+      "Confirm that the user has logged out and the 'Log in' page has been loaded"
+    )
+    loginLogoutPage.checkLoginPage()
   })
 
   it("Should be able to log out from 'Edit Contact' page", () => {
-    loginLogout.loadContactDetails()
+    cy.step("Load the details of the contact")
+    loginLogoutPage.loadContactDetails()
 
+    cy.step("Confirm that the contact details has been loaded")
+    addContactPage.checkContactDetailsPage()
+
+    cy.step("Load the edit mode of the contact")
     addContactPage.loadEditContact()
 
-    loginLogout.getLogout()
+    cy.step("Confirm that the edit contact mode has been loaded")
+    addContactPage.checkEditContactPage()
 
-    loginLogout.checkLoginPage()
+    cy.step("Logout from the APP")
+    loginLogoutPage.getLogout()
+
+    cy.step(
+      "Confirm that the user has logged out and the 'Log in' page has been loaded"
+    )
+    loginLogoutPage.checkLoginPage()
   })
 })

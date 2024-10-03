@@ -2,7 +2,6 @@ import User from "../models/user"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
 import "cypress-map"
-import basicData from "../support/basicData"
 
 export default class AddContactPage {
   private get addContactButton() {
