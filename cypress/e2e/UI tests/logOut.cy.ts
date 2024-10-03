@@ -30,7 +30,7 @@ describe("Log out - UI", { tags: ["@ui", "@logOut"] }, () => {
   it("Should be able to log out from 'Add Contact' page", () => {
     addContactPage.loadAddContact()
 
-    addContactPage.confirmAddContactPage()
+    addContactPage.checkAddContactPage()
 
     loginLogout.getLogout()
 
