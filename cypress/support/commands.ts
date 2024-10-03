@@ -45,9 +45,21 @@ declare global {
         fnReturnEmptyTable,
         fnCompareEmptyTable
       ): Chainable<Element>
+      checkError(
+        errorLoator: string,
+        state: string,
+        errorText: string
+      ): Chainable<Element>
     }
   }
 }
+
+Cypress.Commands.add("checkError", (errorLocator, state, text) => {
+  cy.step("Check the corresponding error message")
+    .get(errorLocator)
+    .should(state)
+    .and("have.text", text)
+})
 
 /**
  * Unfocus the field

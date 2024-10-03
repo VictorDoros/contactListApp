@@ -46,11 +46,8 @@ export default class LogInLogOutPage {
   }
 
   logIn(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInputField).type(user.getStaticEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getStaticEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   logInVisual(user: User) {
@@ -59,11 +56,8 @@ export default class LogInLogOutPage {
   }
 
   logInInvalidCredentials(user: User) {
-    cy.step("Fill in the email field with invalid value")
-    cy.get(this.emailInputField).type(user.getInvalidEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getInvalidEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   submitLogIn() {
@@ -71,16 +65,11 @@ export default class LogInLogOutPage {
   }
 
   checkUserLoggedIn() {
-    cy.step("Confirm that user has logged in")
-    cy.get(this.header).invoke("text").should("eq", "Contact List")
+    cy.checkPage(this.header, "Contact List")
   }
 
-  checkError(state: string, text: string) {
-    return cy
-      .step("Check the corresponding error message")
-      .get(this.error)
-      .should(state)
-      .and("have.text", text)
+  checkError(stateError: string, textError: string) {
+    cy.checkError(this.error, stateError, textError)
   }
 
   getLogout() {
