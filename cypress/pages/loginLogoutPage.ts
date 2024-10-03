@@ -38,7 +38,6 @@ export default class LogInLogOutPage {
   }
 
   loadLoginPage(env: Environment) {
-    cy.step("Load the page")
     cy.visit(env.getEnvironment())
   }
 
@@ -55,11 +54,8 @@ export default class LogInLogOutPage {
   }
 
   logInVisual(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInputField).type(user.getStaticSecondEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getStaticSecondEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   logInInvalidCredentials(user: User) {
@@ -71,8 +67,7 @@ export default class LogInLogOutPage {
   }
 
   submitLogIn() {
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.clickElement(this.submitButton)
   }
 
   checkUserLoggedIn() {
