@@ -2,7 +2,6 @@ import User from "../models/user"
 import Environment from "../models/environment"
 import loginSelectors from "../selectors/login.sel"
 import logoutSelctors from "../selectors/logout.sel"
-import basicData from "../support/basicData"
 
 export default class LogInLogOutPage {
   private get emailInputField() {
@@ -38,108 +37,47 @@ export default class LogInLogOutPage {
   }
 
   loadLoginPage(env: Environment) {
-    cy.step("Load the page")
     cy.visit(env.getEnvironment())
   }
 
   checkLoginPage() {
-    cy.step("Confirm that the page has been loaded")
-    cy.get(this.header).invoke("text").should("eq", "Contact List App")
+    cy.checkPage(this.header, "Contact List App")
   }
 
   logIn(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInputField).type(user.getStaticEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getStaticEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   logInVisual(user: User) {
-    cy.step("Fill in the email field")
-    cy.get(this.emailInputField).type(user.getStaticSecondEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getStaticSecondEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   logInInvalidCredentials(user: User) {
-    cy.step("Fill in the email field with invalid value")
-    cy.get(this.emailInputField).type(user.getInvalidEmail())
-
-    cy.step("Fill in the password field")
-    cy.get(this.passwordInputField).type(user.getPassword())
+    cy.typeText(this.emailInputField, user.getInvalidEmail())
+    cy.typeText(this.passwordInputField, user.getPassword())
   }
 
   submitLogIn() {
-    cy.step("Click on [Submit] button")
-    cy.get(this.submitButton).click()
+    cy.clickElement(this.submitButton)
   }
 
   checkUserLoggedIn() {
-    cy.step("Confirm that user has logged in")
-    cy.get(this.header).invoke("text").should("eq", "Contact List")
+    cy.checkPage(this.header, "Contact List")
   }
 
-  checkError(state: string, text: string) {
-    return cy
-      .step("Check the corresponding error message")
-      .get(this.error)
-      .should(state)
-      .and("have.text", text)
+  checkError(stateError: string, textError: string) {
+    cy.checkError(this.error, stateError, textError)
   }
 
   getLogout() {
-    cy.step("Logout from the APP")
-    cy.get(this.logoutButton).click()
+    cy.clickElement(this.logoutButton)
   }
 
   loadContactDetails() {
     cy.step("Load the details of the contact")
     cy.get(this.firstColumnFirstRow).click()
     cy.get(this.header).invoke("text").should("eq", "Contact Details")
-  }
-
-  takeScreenshotBeforeLogin() {
-    cy.step("Take the screenshot before logging")
-    cy.compareSnapshot("Before filling in the credentials")
-  }
-
-  takeScreenshotAfterFillDataLogin() {
-    cy.step("Unfocus the last inserted field")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot before logging")
-    cy.compareSnapshot("After filling in the credentials")
-  }
-
-  takeScreenshotLogin() {
-    cy.step("Wait untill the page is loaded")
-    cy.waitUntilElementHasState(this.tableHead, basicData.stateData.beVisible)
-
-    cy.step("Take the screenshot after filling in the fields")
-    cy.compareSnapshot("User logged in")
-  }
-
-  takeScreenshotErrorNoCredentials() {
-    cy.step("Wait untill the error is displayed")
-    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
-
-    cy.step("Unfocus the [Submit] button")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot after submitting with no credentials")
-    cy.compareSnapshot("Error no credentials")
-  }
-
-  takeScreenshotErrorInvalidCredentials() {
-    cy.step("Wait untill the error is displayed")
-    cy.waitUntilElementHasState(this.error, basicData.stateData.beVisible)
-
-    cy.step("Unfocus the [Submit] button")
-    cy.unfocusField()
-
-    cy.step("Take the screenshot after submitting with invalid credentials")
-    cy.compareSnapshot("Error invalid credentials")
   }
 }

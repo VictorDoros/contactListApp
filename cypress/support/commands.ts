@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import "cypress-map"
 
 export {}
 declare global {
@@ -9,10 +10,58 @@ declare global {
         elementLocator: string,
         state: string
       ): Chainable<void>
+      waitUntilElementHasValue(
+        elementLocator: string,
+        state: string
+      ): Chainable<void>
       pickElement(elementLocator: string, elementText: string): Chainable<void>
+      loadEndPoint(url: string, buttonElementLocator: string): Chainable<void>
+      clickElement(elementLocator: string): Chainable<void>
+      checkPage(
+        headerElementLocator: string,
+        headerText: string
+      ): Chainable<void>
+      typeText(
+        elementLocator: string,
+        textToBeInserted: string
+      ): Chainable<void>
+      clearFieldAndTypeText(
+        elementLocator: string,
+        textToBeInserted: string
+      ): Chainable<void>
+      checkTextVisibility(
+        elementLocator: string,
+        state: string,
+        elementText: string
+      ): Chainable<void>
+      takeScreenshot(filename: string): Chainable<void>
+      waitForLoadComponentsAndTakeScreenshot(
+        elementLocator: string,
+        elementState: string,
+        fileName: string
+      ): Chainable<void>
+
+      getRow(elementLocator: string, fn: any): Chainable<Element>
+      getEmtpyTable(
+        tableElementLocator: string,
+        fnReturnEmptyTable,
+        fnCompareEmptyTable
+      ): Chainable<Element>
+      checkError(
+        errorLoator: string,
+        state: string,
+        errorText: string
+      ): Chainable<Element>
     }
   }
 }
+
+Cypress.Commands.add("checkError", (errorLocator, state, text) => {
+  cy.step("Check the corresponding error message")
+    .get(errorLocator)
+    .should(state)
+    .and("have.text", text)
+})
 
 /**
  * Unfocus the field
@@ -30,6 +79,14 @@ Cypress.Commands.add("waitUntilElementHasState", (elementLocator, state) => {
 })
 
 /**
+ * Wait until element has a corresponding value
+ */
+
+Cypress.Commands.add("waitUntilElementHasValue", (elementLocator, value) => {
+  cy.get(elementLocator, { timeout: 10000 }).should("have.value", value)
+})
+
+/**
  * Pick an element from multiple elements
  */
 
@@ -41,6 +98,65 @@ Cypress.Commands.add("pickElement", (elementLocator, elementText) => {
     }
   })
 })
+
+Cypress.Commands.add("clickElement", (elementLocator) => {
+  cy.get(elementLocator).click()
+})
+
+Cypress.Commands.add("loadEndPoint", (url, buttonElementLocator) => {
+  cy.visit(url)
+  cy.clickElement(buttonElementLocator)
+})
+
+Cypress.Commands.add("checkPage", (headerElementLocator, headerText) => {
+  cy.get(headerElementLocator).invoke("text").should("eq", headerText)
+})
+
+Cypress.Commands.add("typeText", (elementLocator, textToBeInserted) => {
+  cy.get(elementLocator).type(textToBeInserted)
+})
+
+Cypress.Commands.add(
+  "clearFieldAndTypeText",
+  (elementLocator, textToBeInserted) => {
+    cy.get(elementLocator).clear().type(textToBeInserted)
+  }
+)
+
+Cypress.Commands.add(
+  "checkTextVisibility",
+  (elementLocator, state, elementText) => {
+    cy.get(elementLocator).should(state).and("have.text", elementText)
+  }
+)
+
+Cypress.Commands.add("takeScreenshot", (fileName) => {
+  cy.unfocusField()
+  cy.compareSnapshot(fileName)
+})
+
+Cypress.Commands.add(
+  "waitForLoadComponentsAndTakeScreenshot",
+  (elementLocator, elementState, fileName) => {
+    cy.waitUntilElementHasState(elementLocator, elementState)
+    cy.unfocusField()
+    cy.compareSnapshot(fileName)
+  }
+)
+
+Cypress.Commands.add("getRow", (elementLocator, fn) => {
+  cy.get(elementLocator).map("innerText").then(fn)
+})
+
+Cypress.Commands.add(
+  "getEmtpyTable",
+  (tableElementLocator, fnReturnEmptyTable, fnCompareEmptyTable) => {
+    cy.get(tableElementLocator)
+      .then(fnReturnEmptyTable)
+      .then(fnCompareEmptyTable)
+  }
+)
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
