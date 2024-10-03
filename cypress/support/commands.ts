@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import "cypress-map"
 
 export {}
 declare global {
@@ -6,6 +7,10 @@ declare global {
     interface Chainable {
       unfocusField(): Chainable<void>
       waitUntilElementHasState(
+        elementLocator: string,
+        state: string
+      ): Chainable<void>
+      waitUntilElementHasValue(
         elementLocator: string,
         state: string
       ): Chainable<void>
@@ -20,6 +25,10 @@ declare global {
         elementLocator: string,
         textToBeInserted: string
       ): Chainable<void>
+      clearFieldAndTypeText(
+        elementLocator: string,
+        textToBeInserted: string
+      ): Chainable<void>
       checkTextVisibility(
         elementLocator: string,
         state: string,
@@ -30,6 +39,12 @@ declare global {
         elementState: string,
         fileName: string
       ): Chainable<void>
+      getRow(elementLocator: string, fn: any): Chainable<Element>
+      getEmtpyTable(
+        tableElementLocator: string,
+        fnReturnEmptyTable,
+        fnCompareEmptyTable
+      ): Chainable<Element>
     }
   }
 }
@@ -47,6 +62,14 @@ Cypress.Commands.add("unfocusField", () => {
 
 Cypress.Commands.add("waitUntilElementHasState", (elementLocator, state) => {
   cy.get(elementLocator, { timeout: 10000 }).should(state)
+})
+
+/**
+ * Wait until element has a corresponding value
+ */
+
+Cypress.Commands.add("waitUntilElementHasValue", (elementLocator, value) => {
+  cy.get(elementLocator, { timeout: 10000 }).should("have.value", value)
 })
 
 /**
@@ -80,6 +103,13 @@ Cypress.Commands.add("typeText", (elementLocator, textToBeInserted) => {
 })
 
 Cypress.Commands.add(
+  "clearFieldAndTypeText",
+  (elementLocator, textToBeInserted) => {
+    cy.get(elementLocator).clear().type(textToBeInserted)
+  }
+)
+
+Cypress.Commands.add(
   "checkTextVisibility",
   (elementLocator, state, elementText) => {
     cy.get(elementLocator).should(state).and("have.text", elementText)
@@ -94,6 +124,20 @@ Cypress.Commands.add(
     cy.compareSnapshot(fileName)
   }
 )
+
+Cypress.Commands.add("getRow", (elementLocator, fn) => {
+  cy.get(elementLocator).map("innerText").then(fn)
+})
+
+Cypress.Commands.add(
+  "getEmtpyTable",
+  (tableElementLocator, fnReturnEmptyTable, fnCompareEmptyTable) => {
+    cy.get(tableElementLocator)
+      .then(fnReturnEmptyTable)
+      .then(fnCompareEmptyTable)
+  }
+)
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
