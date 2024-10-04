@@ -37,7 +37,7 @@ describe(
       cy.step(
         "Wait until the page is entirely displayed and take the screenshot before filling in the fields"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.postalCodeField,
         basicData.stateData.beVisible,
         "Before filling in the fields"
@@ -51,7 +51,7 @@ describe(
       cy.step(
         "Wait until the page is entirely displayed and take the screenshot after filling in the fields"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.postalCodeField,
         basicData.stateData.beVisible,
         "After filling in the fields"
@@ -63,7 +63,7 @@ describe(
       cy.step(
         "Wait until the page is entirely displayed and take the screenshot with the new added contact"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.firstColumnsOfRow,
         basicData.stateData.beVisible,
         "New contact added"
@@ -80,7 +80,7 @@ describe(
       cy.step(
         "Wait until the page is loaded with the contact details and take the screenshot with the contact details"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.editButton,
         basicData.stateData.beVisible,
         "Contact details"
@@ -95,7 +95,7 @@ describe(
       cy.step(
         "Wait until the page is loaded for editing the contact and take the screenshot for editing the contact"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.postalCodeField,
         basicData.stateData.beVisible,
         "Edit contact"
@@ -113,7 +113,7 @@ describe(
       cy.step(
         "Wait until the page is loaded with the edited contact and take the screenshot with the edited contact"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.firstColumnsOfRow,
         basicData.stateData.beVisible,
         "Edited contact"
@@ -130,7 +130,7 @@ describe(
       cy.step(
         "Wait until the page is loaded with the deleted contact and take the screenshot with the deleted contact"
       )
-      cy.takeScreenshot(
+      cy.waitForLoadComponentsAndTakeScreenshot(
         addContactSelectorsSel.firstColumnsOfRow,
         basicData.stateData.beVisible,
         "Deleted contact"
