@@ -56,6 +56,9 @@ declare global {
   }
 }
 
+/**
+ * Check the presence of the error and its text
+ */
 Cypress.Commands.add("checkError", (errorLocator, state, text) => {
   cy.step("Check the corresponding error message")
     .get(errorLocator)
@@ -73,7 +76,6 @@ Cypress.Commands.add("unfocusField", () => {
 /**
  * Wait until element has the corresponding state
  */
-
 Cypress.Commands.add("waitUntilElementHasState", (elementLocator, state) => {
   cy.get(elementLocator, { timeout: 10000 }).should(state)
 })
@@ -81,7 +83,6 @@ Cypress.Commands.add("waitUntilElementHasState", (elementLocator, state) => {
 /**
  * Wait until element has a corresponding value
  */
-
 Cypress.Commands.add("waitUntilElementHasValue", (elementLocator, value) => {
   cy.get(elementLocator, { timeout: 10000 }).should("have.value", value)
 })
@@ -89,7 +90,6 @@ Cypress.Commands.add("waitUntilElementHasValue", (elementLocator, value) => {
 /**
  * Pick an element from multiple elements
  */
-
 Cypress.Commands.add("pickElement", (elementLocator, elementText) => {
   cy.get(elementLocator).each(($el) => {
     if ($el.text() == elementText) {
@@ -99,23 +99,38 @@ Cypress.Commands.add("pickElement", (elementLocator, elementText) => {
   })
 })
 
+/**
+ * CLick element
+ */
 Cypress.Commands.add("clickElement", (elementLocator) => {
   cy.get(elementLocator).click()
 })
 
+/**
+ * Reach the endpoint
+ */
 Cypress.Commands.add("loadEndPoint", (url, buttonElementLocator) => {
   cy.visit(url)
   cy.clickElement(buttonElementLocator)
 })
 
+/**
+ * Confirm that the user is on the right page
+ */
 Cypress.Commands.add("checkPage", (headerElementLocator, headerText) => {
   cy.get(headerElementLocator).invoke("text").should("eq", headerText)
 })
 
+/**
+ * Type a text inside the input field
+ */
 Cypress.Commands.add("typeText", (elementLocator, textToBeInserted) => {
   cy.get(elementLocator).type(textToBeInserted)
 })
 
+/**
+ * Clear the input field and type the text
+ */
 Cypress.Commands.add(
   "clearFieldAndTypeText",
   (elementLocator, textToBeInserted) => {
@@ -123,6 +138,9 @@ Cypress.Commands.add(
   }
 )
 
+/**
+ * Check the visibility of the text element
+ */
 Cypress.Commands.add(
   "checkTextVisibility",
   (elementLocator, state, elementText) => {
@@ -130,11 +148,17 @@ Cypress.Commands.add(
   }
 )
 
+/**
+ * Unfocus the last inserted field and take the screenshot
+ */
 Cypress.Commands.add("takeScreenshot", (fileName) => {
   cy.unfocusField()
   cy.compareSnapshot(fileName)
 })
 
+/**
+ * Wait until an element has a specific state, or page entirely loaded, and take a screenshot
+ */
 Cypress.Commands.add(
   "waitForLoadComponentsAndTakeScreenshot",
   (elementLocator, elementState, fileName) => {
@@ -144,10 +168,16 @@ Cypress.Commands.add(
   }
 )
 
+/**
+ * Get a row from the table
+ */
 Cypress.Commands.add("getRow", (elementLocator, fn) => {
   cy.get(elementLocator).map("innerText").then(fn)
 })
 
+/**
+ * Confirm that the table is empty
+ */
 Cypress.Commands.add(
   "getEmtpyTable",
   (tableElementLocator, fnReturnEmptyTable, fnCompareEmptyTable) => {
