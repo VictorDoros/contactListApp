@@ -44,8 +44,8 @@ declare global {
       getRow(elementLocator: string, fn: any): Chainable<Element>
       getEmtpyTable(
         tableElementLocator: string,
-        fnReturnEmptyTable,
-        fnCompareEmptyTable
+        fnReturnEmptyTable: any,
+        fnCompareEmptyTable: any
       ): Chainable<Element>
       checkError(
         errorLoator: string,
