@@ -114,7 +114,7 @@ export default class AddContactPage {
   }
 
   confirmAddContact(user: User) {
-    cy.getRow(this.rowsNewContact, (arrayResults) => {
+    cy.getRow(this.rowsNewContact, (arrayResults: Array<String>) => {
       expect(arrayResults[0]).to.eq(
         `${user.getFirstName()} ${user.getLastName()}`
       )
@@ -130,7 +130,7 @@ export default class AddContactPage {
   }
 
   confirmEditContact(user: User) {
-    cy.getRow(this.rowsNewContact, (arrayResults) => {
+    cy.getRow(this.rowsNewContact, (arrayResults: Array<String>) => {
       expect(arrayResults[0]).to.eq(
         `${user.getStaticFirstName()} ${user.getStaticLastName()}`
       )
