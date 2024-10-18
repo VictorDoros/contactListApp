@@ -209,7 +209,7 @@ export default class AddContactPage {
         return rows.length
       },
       (numberRows) => {
-        expect(numberRows).to.eq(0)
+        expect(numberRows).to.eq(0) 
       }
     )
   }
