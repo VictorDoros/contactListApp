@@ -16,7 +16,7 @@ describe(
       user = new User()
       env = new Environment()
       registerUser = new RegisterUser()
-      addContactPage = new AddContactPage() 
+      addContactPage = new AddContactPage()
 
       cy.step("Reach the page and click on [Sign in] button")
       registerUser.loadRegisterPage(env)
