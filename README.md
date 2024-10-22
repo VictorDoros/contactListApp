@@ -23,12 +23,16 @@ npm install
 
 _Open mode:_
 ```
-npx cypress open
+npx cypress open --env env='prod'
 ```
 _Headless mode:_
 ```
-npx cypress run
-```   
+npx cypress run --env env='prod'
+```
+
+NOTE:
+
+--env env='prod' flag is added to specify the environment that is wanted to be run, configured in contactListApp/cypress/models/environment.ts
    
 # Dependencies used within the project
 1. @cypress/grep -  [@cypress/grep documentation](https://www.npmjs.com/package/@cypress/grep)
