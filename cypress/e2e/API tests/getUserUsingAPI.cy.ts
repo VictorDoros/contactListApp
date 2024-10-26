@@ -12,10 +12,10 @@ describe("Get the user - API", { tags: ["@api", "@getUserAPI"] }, () => {
     env = new Environment()
     apiRequest = new APIRequests()
 
-    apiRequest.logInUsingAPI(user, env)
+    apiRequest.loginUser(user, env)
   })
 
   it("Get the user using API", () => {
-    apiRequest.getUserUsingAPI(user, env)
+    apiRequest.getUser(user, env)
   })
 })

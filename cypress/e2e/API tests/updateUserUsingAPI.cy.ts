@@ -12,12 +12,12 @@ describe("Update user - API", { tags: ["@api", "@updateUserAPI"] }, () => {
     env = new Environment()
     apiRequest = new APIRequests()
 
-    apiRequest.registerUsingAPI(user, env)
+    apiRequest.registerUser(user, env)
   })
 
   it("Update user using API", () => {
-    apiRequest.updateUserUsingAPI(user, env)
+    apiRequest.updateUser(user, env)
 
-    apiRequest.getUserAfterUpdateUsingAPI(user, env)
+    apiRequest.getUserAfterUpdate(user, env)
   })
 })

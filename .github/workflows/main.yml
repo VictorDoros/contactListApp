@@ -2,10 +2,7 @@ name: E2E regression
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
-  schedule:
-    - cron:  '0 8 * * *'    
+      - testing
 jobs:
   Cypress-Test:
     runs-on: ubuntu-22.04

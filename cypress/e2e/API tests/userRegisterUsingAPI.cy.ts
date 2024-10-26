@@ -17,7 +17,7 @@ describe(
     })
 
     it("Register user using API", () => {
-      apiRequest.registerUsingAPI(user, env)
+      apiRequest.registerUser(user, env)
     })
   }
 )

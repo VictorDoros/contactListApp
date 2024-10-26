@@ -12,10 +12,10 @@ describe("Log out - API", { tags: ["@api", "@logoutAPI"] }, () => {
     user = new User()
     apiRequest = new APIRequests()
 
-    apiRequest.logInUsingAPI(user, env)
+    apiRequest.loginUser(user, env)
   })
 
   it("Log out using API", () => {
-    apiRequest.logOutUsingAPI(user, env)
+    apiRequest.logoutUser(user, env)
   })
 })

@@ -12,10 +12,10 @@ describe("Add contact - API", { tags: ["@api", "@addContactsAPI"] }, () => {
     env = new Environment()
     apiRequest = new APIRequests()
 
-    apiRequest.registerUsingAPI(user, env)
+    apiRequest.registerUser(user, env)
   })
 
   it("Should be able to add a contact using API", () => {
-    apiRequest.addContactUsingAPI(user, env)
+    apiRequest.addContact(user, env)
   })
 })
