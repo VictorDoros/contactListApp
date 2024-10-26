@@ -12,10 +12,10 @@ describe("Delete user - API", { tags: ["@api", "@deleteUserAPI"] }, () => {
     env = new Environment()
     apiRequest = new APIRequests()
 
-    apiRequest.registerUsingAPI(user, env)
+    apiRequest.registerUser(user, env)
   })
 
   it("Should be able to delete the user using API", () => {
-    apiRequest.deleteUserUsingAPI(user, env)
+    apiRequest.deleteUser(user, env)
   })
 })

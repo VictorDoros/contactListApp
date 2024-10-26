@@ -14,6 +14,6 @@ describe("Log in - API", { tags: ["@api", "@login", "@loginAPI"] }, () => {
   })
 
   it("Log in using API", () => {
-    apiRequest.logInUsingAPI(user, env)
+    apiRequest.loginUser(user, env)
   })
 })

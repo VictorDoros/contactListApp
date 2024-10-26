@@ -12,12 +12,12 @@ describe("Get contact - API", { tags: ["@api", "@getContactListAPI"] }, () => {
     env = new Environment()
     apiRequest = new APIRequests()
 
-    apiRequest.logInUsingAPI(user, env)
+    apiRequest.loginUser(user, env)
   })
 
   it("Get the contact list using API", () => {
-    apiRequest.addContactUsingAPI(user, env)
+    apiRequest.addContact(user, env)
 
-    apiRequest.getContactListUsingAPI(user, env)
+    apiRequest.getContactList(user, env)
   })
 })
