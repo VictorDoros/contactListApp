@@ -30,13 +30,13 @@ npm install
 _Open mode:_
 
 ```
-npx cypress open --env env='master'
+npx cypress open --env env='prod'
 ```
 
 _Headless mode:_
 
 ```
-npx cypress run --env env='master'
+npx cypress run --env env='prod'
 ```
 
 # Dependencies used within the project
