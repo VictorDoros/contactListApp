@@ -36,7 +36,7 @@ npx cypress open --env env='prod'
 _Headless mode:_
 
 ```
-npx cypress run
+npx cypress run --env env='prod'
 ```
 
 # Dependencies used within the project
