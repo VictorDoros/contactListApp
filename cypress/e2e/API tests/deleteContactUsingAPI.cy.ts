@@ -15,15 +15,15 @@ describe(
       env = new Environment()
       apiRequest = new APIRequests()
 
-      apiRequest.logInUsingAPI(user, env)
+      apiRequest.loginUser(user, env)
     })
 
     beforeEach(() => {
-      apiRequest.addStaticContactUsingAPI(user, env)
+      apiRequest.addStaticContact(user, env)
     })
 
     it("Should be able to delete the contact", () => {
-      apiRequest.deleteContactUsingAPI(user, env)
+      apiRequest.deleteContact(user, env)
     })
   }
 )

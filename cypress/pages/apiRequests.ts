@@ -13,27 +13,27 @@ import DeleteContactAPI from "../api/deleteContactAPI"
 import "cypress-map"
 
 export default class APIRequests {
-  registerUsingAPI(user: User, env: Environment) {
+  registerUser(user: User, env: Environment) {
     return new UserAPI().register(user, env).then((response) => {
       user.setToken(response.body.token)
     })
   }
 
-  logInUsingAPI(user: User, env: Environment) {
+  loginUser(user: User, env: Environment) {
     return new LogInAPI().apiLogIn(user, env).then((response) => {
       user.setToken(response.body.token)
     })
   }
 
-  logOutUsingAPI(user: User, env: Environment) {
+  logoutUser(user: User, env: Environment) {
     return new LogOutAPI().apiLogOut(user, env)
   }
 
-  addContactUsingAPI(user: User, env: Environment) {
+  addContact(user: User, env: Environment) {
     return new AddContactAPI().apiAddContact(user, env)
   }
 
-  addStaticContactUsingAPI(user: User, env: Environment) {
+  addStaticContact(user: User, env: Environment) {
     return new AddContactAPI()
       .apiAddStaticContact(user, env)
       .then((response) => {
@@ -41,7 +41,7 @@ export default class APIRequests {
       })
   }
 
-  getUserUsingAPI(user: User, env: Environment) {
+  getUser(user: User, env: Environment) {
     return new GetUser().getUser(user, env).then((response) => {
       expect(response.body.firstName).to.eq(logInData.firstName)
       expect(response.body.lastName).to.eq(logInData.lastName)
@@ -49,28 +49,28 @@ export default class APIRequests {
     })
   }
 
-  getUserAfterUpdateUsingAPI(user: User, env: Environment) {
+  getUserAfterUpdate(user: User, env: Environment) {
     return new GetUser().getUser(user, env).then((response) => {
       expect(response.body.firstName).to.eq(`${user.getFirstName()}_updated`)
       expect(response.body.lastName).to.eq(`${user.getLastName()}_updated`)
     })
   }
 
-  getContactListUsingAPI(user: User, env: Environment) {
+  getContactList(user: User, env: Environment) {
     return new GetContactAPI().getContactList(user, env).then((response) => {
       expect(response.body).to.be.an("array").and.not.empty
     })
   }
 
-  updateUserUsingAPI(user: User, env: Environment) {
+  updateUser(user: User, env: Environment) {
     new UpdateUserAPI().updateUser(user, env)
   }
 
-  deleteUserUsingAPI(user: User, env: Environment) {
+  deleteUser(user: User, env: Environment) {
     new DeleteUserAPI().deleteUser(user, env)
   }
 
-  deleteContactUsingAPI(user: User, env: Environment) {
+  deleteContact(user: User, env: Environment) {
     new DeleteContactAPI().apiDeleteContact(user, env)
   }
 }
