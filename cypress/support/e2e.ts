@@ -17,6 +17,7 @@
 import "./commands"
 import "cypress-plugin-steps"
 import "cypress-mochawesome-reporter/register"
+import "cypress-map"
 const compareSnapshotCommand = require("cypress-image-diff-js/command")
 const registerCypressGrep = require("@cypress/grep")
 compareSnapshotCommand()

@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import "cypress-map"
+import spok from "cy-spok"
 
 export {}
 declare global {
@@ -171,8 +171,8 @@ Cypress.Commands.add(
 /**
  * Get a row from the table
  */
-Cypress.Commands.add("getRow", (elementLocator, fn) => {
-  cy.get(elementLocator).map("innerText").then(fn)
+Cypress.Commands.add("getRow", (elementLocator, values) => {
+  cy.get(elementLocator).map("innerText").should(spok(values))
 })
 
 /**

@@ -1,7 +1,6 @@
 import User from "../models/user"
 import addContactSelectors from "../selectors/addContactSelectors.sel"
 import addContactSelectorsSel from "../selectors/addContactSelectors.sel"
-import "cypress-map"
 
 export default class AddContactPage {
   private get addContactButton() {
@@ -114,35 +113,27 @@ export default class AddContactPage {
   }
 
   confirmAddContact(user: User) {
-    cy.getRow(this.rowsNewContact, (arrayResults: Array<String>) => {
-      expect(arrayResults[0]).to.eq(
-        `${user.getFirstName()} ${user.getLastName()}`
-      )
-      expect(arrayResults[1]).to.eq(user.getDateOfBirth())
-      expect(arrayResults[2]).to.eq(user.getEmail())
-      expect(arrayResults[3]).to.eq(user.getPhone())
-      expect(arrayResults[4]).to.include(user.getStreetAddress())
-      expect(arrayResults[5]).to.include(
-        `${user.getCity()} ${user.getPostalCode()}`
-      )
-      expect(arrayResults[6]).to.eq(user.getCountry())
-    })
+    cy.getRow(this.rowsNewContact, [
+      `${user.getFirstName()} ${user.getLastName()}`,
+      user.getDateOfBirth(),
+      user.getEmail(),
+      user.getPhone(),
+      user.getStreetAddress(),
+      `${user.getCity()} ${user.getPostalCode()}`,
+      user.getCountry(),
+    ])
   }
 
   confirmEditContact(user: User) {
-    cy.getRow(this.rowsNewContact, (arrayResults: Array<String>) => {
-      expect(arrayResults[0]).to.eq(
-        `${user.getStaticFirstName()} ${user.getStaticLastName()}`
-      )
-      expect(arrayResults[1]).to.eq(user.getDateOfBirth())
-      expect(arrayResults[2]).to.eq(user.getEmail())
-      expect(arrayResults[3]).to.eq(user.getPhone())
-      expect(arrayResults[4]).to.include(user.getStreetAddress())
-      expect(arrayResults[5]).to.include(
-        `${user.getCity()} ${user.getPostalCode()}`
-      )
-      expect(arrayResults[6]).to.eq(user.getCountry())
-    })
+    cy.getRow(this.rowsNewContact, [
+      `${user.getStaticFirstName()} ${user.getStaticLastName()}`,
+      user.getDateOfBirth(),
+      user.getEmail(),
+      user.getPhone(),
+      user.getStreetAddress(),
+      `${user.getCity()} ${user.getPostalCode()}`,
+      user.getCountry(),
+    ])
   }
 
   loadContactDetails() {
@@ -209,7 +200,7 @@ export default class AddContactPage {
         return rows.length
       },
       (numberRows) => {
-        expect(numberRows).to.eq(0) 
+        expect(numberRows).to.eq(0)
       }
     )
   }
