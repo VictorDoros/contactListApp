@@ -10,7 +10,6 @@ import logInData from "../fixtures/logInData"
 import UpdateUserAPI from "../api/updateUserAPI"
 import DeleteUserAPI from "../api/deleteUserAPI"
 import DeleteContactAPI from "../api/deleteContactAPI"
-import "cypress-map"
 
 export default class APIRequests {
   registerUser(user: User, env: Environment) {
