@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import "cypress-map"
 
 export {}
 declare global {
