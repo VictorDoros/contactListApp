@@ -1,6 +1,5 @@
 import User from "../models/user"
 import Environment from "../models/environment"
-import "cypress-plugin-api"
 
 export default class UserAPI {
   register(user: User, env: Environment) {

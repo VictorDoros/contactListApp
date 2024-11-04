@@ -196,8 +196,7 @@ export default class AddContactPage {
     cy.getEmtpyTable(
       "table",
       (table) => {
-        let rows = table.find("tr td")
-        return rows.length
+        return table.find("tr td").length
       },
       (numberRows) => {
         expect(numberRows).to.eq(0)

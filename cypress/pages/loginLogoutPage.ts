@@ -32,10 +32,6 @@ export default class LogInLogOutPage {
     return logoutSelctors.firstColumnOfFirstRow
   }
 
-  private get tableHead() {
-    return loginSelectors.tableHead
-  }
-
   loadLoginPage(env: Environment) {
     cy.visit(env.getEnvironment())
   }
