@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import "./commands"
 import "cypress-plugin-steps"
+import "cypress-plugin-api"
 import "cypress-mochawesome-reporter/register"
 import "cypress-map"
 const compareSnapshotCommand = require("cypress-image-diff-js/command")
