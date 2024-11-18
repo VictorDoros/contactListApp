@@ -320,7 +320,7 @@ describe(
       cy.waitForLoadComponentsAndTakeScreenshot(
         registerSel.error,
         basicData.stateData.beVisible,
-        "Register  with existing email"
+        "Register with existing email"
       )
     })
   }
