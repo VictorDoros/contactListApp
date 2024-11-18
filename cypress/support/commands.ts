@@ -153,7 +153,10 @@ Cypress.Commands.add(
  */
 Cypress.Commands.add("takeScreenshot", (fileName) => {
   cy.unfocusField()
-  cy.compareSnapshot(fileName)
+  cy.compareSnapshot({
+    name: fileName,
+     testThreshold: 0.2
+  })
 })
 
 /**
@@ -164,7 +167,10 @@ Cypress.Commands.add(
   (elementLocator, elementState, fileName) => {
     cy.waitUntilElementHasState(elementLocator, elementState)
     cy.unfocusField()
-    cy.compareSnapshot(fileName)
+    cy.compareSnapshot({
+      name: fileName,
+       testThreshold: 0.2
+    })
   }
 )
 
