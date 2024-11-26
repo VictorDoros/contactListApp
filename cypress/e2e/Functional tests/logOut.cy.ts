@@ -3,7 +3,7 @@ import Environment from "../../models/environment"
 import LogInLogOutPage from "../../pages/loginLogoutPage"
 import AddContactPage from "../../pages/addContactPage"
 
-describe("Log out - UI", { tags: ["@ui", "@logOut"] }, () => {
+describe("Log out - Functional", { tags: ["@functional", "@logOut", "logOutFunctional"] }, () => {
   let user: User
   let env: Environment
   let loginLogoutPage: LogInLogOutPage
