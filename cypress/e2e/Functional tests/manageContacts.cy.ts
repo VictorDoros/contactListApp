@@ -4,8 +4,8 @@ import RegisterUser from "../../pages/registerUser"
 import AddContactPage from "../../pages/addContactPage"
 
 describe(
-  "Manage contacts - UI",
-  { tags: ["@ui", "@manageContacts", "@manageContactsUI"] },
+  "Manage contacts - Functional",
+  { tags: ["@functional", "@manageContacts", "@manageContactsFunctional"] },
   () => {
     let user: User
     let env: Environment

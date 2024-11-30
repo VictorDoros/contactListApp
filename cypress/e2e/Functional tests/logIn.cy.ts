@@ -4,7 +4,7 @@ import LogInLogOut from "../../pages/loginLogoutPage"
 import basicData from "../../support/basicData"
 import logInData from "../../fixtures/logInData"
 
-describe("Log in - UI", { tags: ["@ui", "@login", "@loginUI"] }, () => {
+describe("Log in - Functional", { tags: ["@functional", "@login", "@loginFunctional"] }, () => {
   let user: User
   let env: Environment
   let logInLogOutPage: LogInLogOut
