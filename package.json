@@ -15,7 +15,7 @@
     "@cypress/grep": "^4.1.0",
     "@faker-js/faker": "^8.4.1",
     "cy-spok": "^1.6.2",
-    "cypress": "^13.15.0",
+    "cypress": "^13.17.0",
     "cypress-image-diff-js": "^2.2.1",
     "cypress-map": "^1.40.0",
     "cypress-mochawesome-reporter": "^3.8.2",
